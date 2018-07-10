@@ -1,4 +1,4 @@
-# MulleFoundation-developer, Objective C with cmake and the MulleFoundation
+# mulle-foundation-developer, Objective C with cmake and the MulleFoundation
 
 
 See the [mulle-sde Wiki](https://github.com/mulle-sde/mulle-sde/wiki) for

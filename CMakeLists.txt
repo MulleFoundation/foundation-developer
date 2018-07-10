@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.0)
 
-project( MulleFoundation-developer NONE)
+project( mulle-foundation-developer NONE)
 
 set( PROJECT_VERSION 0.13.0)
 
