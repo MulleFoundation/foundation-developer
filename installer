@@ -174,7 +174,7 @@ main()
    EXTENSION_DIR="${share}/extensions"
    mkdir -p "${EXTENSION_DIR}" || exit 1
 
-   for i in src/mulle-foundation
+   for i in src/foundation
    do
       cp -Rav "${i}" "${EXTENSION_DIR}/" || exit 1
    done

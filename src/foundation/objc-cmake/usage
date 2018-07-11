@@ -1,0 +1,5 @@
+Support for developing Objective-C using the MulleFoundation and cmake, based
+on mulle-foundation-developer.
+This version enables the use of #import <Foundation/Foundation.h> in your
+projects.
+
