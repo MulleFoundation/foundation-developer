@@ -1,4 +1,4 @@
-# foundation-developer, Objective C with cmake and the MulleFoundation
+# 📦 foundation-developer, Objective C with mulle-sde and the mulle-objc Foundation
 
 
 Enables the use of `<Foundation/Foundation.h>` in your projects.

@@ -13,5 +13,5 @@ set( CPACK_STRIP_FILES false)
 
 
 set( CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/MulleFoundation/foundation-developer")
-set( CPACK_DEBIAN_PACKAGE_DEPENDS "mulle-objc-developer")
+set( CPACK_DEBIAN_PACKAGE_DEPENDS "mulle-foundation-developer")
 set( CPACK_RPM_PACKAGE_VENDOR "MulleFoundation")
