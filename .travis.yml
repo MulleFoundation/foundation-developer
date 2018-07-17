@@ -28,12 +28,12 @@ matrix:
 
 
 script:
-  - "MULLE_SDE_EXTENSION_PATH=\"${PWD}/src:/usr/share/mulle-sde:/usr/local/share/mulle-sde\" mulle-sde init -d exe -m foundation/objc-developer executable"
+  - "MULLE_SDE_EXTENSION_BASE_PATH=\"${PWD}/src\" mulle-sde init -d exe -m foundation/objc-developer executable"
   - "cd exe"
   - "mulle-sde -v craft"
   - "cd .."
-  - "MULLE_SDE_EXTENSION_PATH=\"${PWD}/src:/usr/share/mulle-sde:/usr/local/share/mulle-sde\" mulle-sde init -d lib -m foundation/objc-developer library"
-  - "cd lib"
+  - "MULLE_SDE_EXTENSION_BASE_PATH=\"${PWD}/src\" mulle-sde init -d lib -m foundation/objc-developer library"
+  - "cd lib
   - "mulle-sde -v craft"
   - "cd .."
 
