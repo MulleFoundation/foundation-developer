@@ -20,6 +20,9 @@ Extension                 | Type | Description
 foundation/objc-developer | meta | Create Objective-C projects
 
 
+![package relationships](dox/relationships.png)
+
+
 ## Install
 
 ### Packages

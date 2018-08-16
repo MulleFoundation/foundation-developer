@@ -1,0 +1,40 @@
+digraph xxx {
+   node [ shape="note" ]
+
+
+   subgraph {
+      node [ shape="folder"; color="blue"; fontcolor="blue" ]
+      "foundation-developer"
+      "mulle-foundation-developer"
+      "mulle-objc-developer"
+      "mulle-c-developer"
+      "mulle-sde-developer"
+      "mulle-sde"
+   }
+
+   subgraph {
+      node [ shape="folder"; color="magenta"; fontcolor="magenta" ]
+      "mulle-clang"
+   }
+
+   subgraph {
+      node [ shape="box"; color="magenta"; fontcolor="magenta" ]
+      rank = same; "mulle-sde"
+   }
+
+   subgraph {
+      node [ shape="folder"; color="magenta"; fontcolor="magenta" ]
+      rank = same; "cmake";
+   }
+   "foundation-developer" -> "mulle-foundation-developer"
+   "foundation-developer" -> "Foundation"
+   "mulle-foundation-developer" -> "mulle-objc-developer"
+   "mulle-foundation-developer" -> "MulleFoundation"
+   "mulle-objc-developer" -> "mulle-c-developer"
+   "mulle-objc-developer" -> "MulleObjC"
+   "mulle-objc-developer" -> "mulle-clang"
+   "mulle-c-developer"    -> "mulle-sde-developer"
+   "mulle-c-developer"    -> "mulle-c"
+   "mulle-sde-developer"  -> "mulle-sde"
+   "mulle-sde-developer"  -> "cmake"
+}
