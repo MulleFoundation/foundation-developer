@@ -1,4 +1,4 @@
-# 👒 foundation-developer, Objective C with mulle-sde and the MulleFoundation
+# 👒 Objective C with mulle-sde and the MulleFoundation
 
 
 

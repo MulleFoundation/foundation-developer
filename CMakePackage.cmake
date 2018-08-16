@@ -7,7 +7,7 @@ set( CPACK_PACKAGE_NAME "${PROJECT_NAME}")
 set( CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
 set( CPACK_PACKAGE_CONTACT "nat@mulle-kybernetik.com")
 set( CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
-set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "👒 foundation-developer, Objective C with mulle-sde and the mulle-objc Foundation")
+set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "👒 Objective C with mulle-sde and the mulle-objc Foundation")
 set( CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
 set( CPACK_STRIP_FILES false)
 

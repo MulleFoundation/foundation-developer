@@ -3,7 +3,7 @@
 # formula operations.
 #
 PROJECT="foundation-developer"      # your project/repository name
-DESC="👒 foundation-developer, Objective C with mulle-sde and the mulle-objc Foundation"
+DESC="👒 Objective C with mulle-sde and the mulle-objc Foundation"
 
 # LANGUAGE="c"             # c,cpp, objc, bash ...
 # NAME="${PROJECT}"        # formula filename without .rb extension
