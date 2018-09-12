@@ -11,15 +11,14 @@ code. It enables the use of the common `#import <Foundation/Foundation.h>` in yo
 projects. It is very thin package atop of 
 [mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
 
-> Links:
->
-> * Use [mulle-objc Community](//mulle-objc.github.io) as the starting point for information about the MulleFoundation and **mulle-objc** in general.
-> * See [mulle-sde Wiki](//github.com/mulle-sde/mulle-sde/wiki) for an introduction on **mulle-sde**.
->
+For further details, use [mulle-objc Community](//mulle-objc.github.io) as the starting 
+point on the MulleFoundation and **mulle-objc** in general. 
+See [mulle-sde Wiki](//github.com/mulle-sde/mulle-sde/wiki) for an introduction to **mulle-sde**.
 
 Extension                 | Type | Description
 --------------------------|------|----------------------------
 foundation/objc-developer | meta | Create Objective-C projects
+
 
 ## Install
 
