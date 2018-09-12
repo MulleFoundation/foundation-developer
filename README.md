@@ -1,8 +1,9 @@
 # 👒 Objective C with mulle-sde and the MulleFoundation
 
 This is the most general starting point for Objective-C development with
-[mulle-objc](//github.com/mulle-objc). As a package **foundation-developer** is also a convenient way to
-install [mulle-sde](//github.com/MulleSDE) and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
+[mulle-objc](//github.com/mulle-objc). If you install **foundation-developer** as a package, this is a convenient way to
+install all the requirements like [mulle-sde](//github.com/MulleSDE) and 
+[mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
 
 **foundation-developer** is a collection of [mulle-sde](//github.com/mulle-sde/mulle-sde)
 *extensions* to support development of [MulleFoundation](//github.com/MulleFoundation)
@@ -17,9 +18,6 @@ projects. It is very thin package atop of
 Extension                 | Type | Description
 --------------------------|------|----------------------------
 foundation/objc-developer | meta | Create Objective-C projects
-
-![package relationships](dox/relationships.png)
-
 
 ## Install
 
@@ -135,3 +133,8 @@ This is a list of resources useful when starting to write Objective-C.
 
 An interactive tutorial site to learn the basics of C is 
 [learn-c.org free interactive C tutorial](https://www.learn-c.org)
+
+
+# Relations 
+
+![package relationships](dox/relationships.png)
