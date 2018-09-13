@@ -1,8 +1,8 @@
 # 👒 Objective C with mulle-sde and the MulleFoundation
 
 This is the most general starting point for Objective-C development with
-[mulle-objc](//github.com/mulle-objc). If you install **foundation-developer** as a package, this is a convenient way to
-install all the requirements like [mulle-sde](//github.com/MulleSDE) and 
+[mulle-objc](//github.com/mulle-objc). If you install **foundation-developer** as a package, 
+this is a convenient way to install all the requirements like [mulle-sde](//github.com/MulleSDE) and 
 [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
 
 **foundation-developer** is a collection of [mulle-sde](//github.com/mulle-sde/mulle-sde)
@@ -21,6 +21,11 @@ foundation/objc-developer | meta | Create Objective-C projects
 
 
 ## Install
+
+The initial install will add **mulle-sde** and **mulle-clang** to your
+system. The Foundation itself will be fetched by mulle-sde, when you create 
+a project. See **Usage** below. Check out the Wiki for more technical details.
+
 
 ### Packages
 
