@@ -24,7 +24,8 @@ foundation/objc-developer | meta | Create Objective-C projects
 
 The initial install will add **mulle-sde** and **mulle-clang** to your
 system. The Foundation itself will be fetched by mulle-sde, when you create 
-a project. See **Usage** below. Check out the Wiki for more technical details.
+a project, see **Usage** below. Check out the [Wiki](//github.com/MulleFoundation/foundation-developer/wiki) 
+for build instructions without creating a project.
 
 
 ### Packages
