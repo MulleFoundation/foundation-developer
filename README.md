@@ -1,8 +1,6 @@
 # 👒 Objective C with mulle-sde and the MulleFoundation
 
-
-
-This is a collection of [mulle-sde](//github.com/mulle-sde/mulle-sde)
+**foundation-developer** is a collection of [mulle-sde](//github.com/mulle-sde/mulle-sde)
 *extensions* to support development of [MulleFoundation](//github.com/MulleFoundation)
 code. As a package **foundation-developer** is also a convenient way to
 install mulle-sde and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
@@ -11,19 +9,24 @@ install mulle-sde and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
 projects. It is very thin package atop of
 [mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
 
-> See the [mulle-sde Wiki](https://github.com/mulle-sde/mulle-sde/wiki) for
-> an introduction on **mulle-sde**.
-
+For further details, use [mulle-objc Community](//mulle-objc.github.io) as the starting
+point on the MulleFoundation and **mulle-objc** in general.
+See [mulle-sde Wiki](//github.com/mulle-sde/mulle-sde/wiki) for an introduction to **mulle-sde**.
 
 Extension                 | Type | Description
 --------------------------|------|----------------------------
 foundation/objc-developer | meta | Create Objective-C projects
 
 
-![package relationships](dox/relationships.png)
-
-
 ## Install
+
+The initial install will only add **mulle-sde** and **mulle-clang** to your
+system. The Foundation itself will be fetched by mulle-sde, when you create
+a new project (see **Usage** below).
+
+Check out the [Wiki](//github.com/MulleFoundation/foundation-developer/wiki)
+if you want to build the MulleFoundation without creating a mulle-sde project.
+
 
 ### Packages
 
@@ -123,3 +126,28 @@ mulle-sde init -m foundation/objc-developer -d foolib library
 mulle-sde init -m foundation/objc-developer none
 mulle-sde craft
 ```
+# How to write Objective-C
+
+This is a list of resources useful when starting to write Objective-C.
+
+## Programming with Objective-C, by Apple
+
+[Programming With Objective C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html) covers all the basics. Ignore the chapter about "Blocks", everything else should be fine.
+
+## Concepts in Objective-C Programming, by Apple
+
+[Concepts in Objective-C Programming](https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Introduction/Introduction.html) is more in-depth and is a good read to understand some terminology used by fellow Objective-C coders. Ignore the chapters "Delegates and Data Sources", "Model View Controller", "Object Modeling", "Outlets", "Receptionist Pattern", "Target-Action", "Toll-Free Bridging"
+
+## Learn Objective-C, CocoaDev
+
+[Learn Objective-C](https://www.cocoadevcentral.com/d/learn_objectivec) gives a quick overview of concepts. Ignore the part about "Dot Syntax" though.
+
+## Learn-C.org
+
+An interactive tutorial site to learn the basics of C is
+[learn-c.org free interactive C tutorial](https://www.learn-c.org)
+
+
+# Relations
+
+![package relationships](dox/relationships.png)
