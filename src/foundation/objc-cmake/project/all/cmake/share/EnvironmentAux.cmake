@@ -7,5 +7,5 @@ if( NOT __ENVIRONMENT_AUX_CMAKE__)
 
    set( CMAKE_FIND_FRAMEWORK "LAST")
 
-   include( ExecutableObjCAux OPTIONAL)
+   include( ExecutableAuxObjC OPTIONAL)
 endif()

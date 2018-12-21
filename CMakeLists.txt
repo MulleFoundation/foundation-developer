@@ -2,7 +2,7 @@ cmake_minimum_required( VERSION 3.0)
 
 project( foundation-developer NONE)
 
-set( PROJECT_VERSION 0.13.0)
+set( PROJECT_VERSION 0.14.0)
 
 
 set( EXTENSIONS
@@ -21,6 +21,7 @@ install( DIRECTORY ${EXTENSIONS}
    DESTINATION "share/mulle-sde/extensions"
    USE_SOURCE_PERMISSIONS
    PATTERN "*._DS_Store" EXCLUDE
+   PATTERN "*.ignore" EXCLUDE
 )
 
 

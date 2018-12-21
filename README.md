@@ -7,8 +7,8 @@ This is a collection of [mulle-sde](//github.com/mulle-sde/mulle-sde)
 code. As a package **foundation-developer** is also a convenient way to
 install mulle-sde and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
 
-**foundation-developer** enables the use of `<Foundation/Foundation.h>` in your 
-projects. It is very thin package atop of 
+**foundation-developer** enables the use of `<Foundation/Foundation.h>` in your
+projects. It is very thin package atop of
 [mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
 
 > See the [mulle-sde Wiki](https://github.com/mulle-sde/mulle-sde/wiki) for
@@ -50,7 +50,7 @@ sudo apt-get update
 
 ### Script
 
-mulle-sde provides an [installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/installer-all) script to install the required commands and foundation-developer into `/usr` or some other place.
+mulle-sde provides an [installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all) script to install the required commands and foundation-developer into `/usr` or some other place.
 
 You need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang) yourself.
 
@@ -59,7 +59,7 @@ This is suitable for environments without supported package managers:
 #### Install into /usr with sudo
 
 ```
-curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/installer-all' && \
+curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all' && \
 chmod 755 installer-all && \
 sudo OTHER_PROJECTS="MulleFoundation/foundation-developer;latest \
 MulleFoundation/mulle-foundation-developer;latest \
@@ -71,7 +71,7 @@ SDE_PROJECTS="mulle-sde-developer;latest" ./installer-all /usr
 #### Install into ${HOME} (without sudo)
 
 ```
-curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/installer-all' && \
+curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all' && \
 chmod 755 installer-all && \
 OTHER_PROJECTS="MulleFoundation/foundation-developer;latest \
 MulleFoundation/mulle-foundation-developer;latest \
@@ -100,7 +100,7 @@ sudo docker run -i -t --rm foundation
 #### Check that the (meta) extensions are found:
 
 ```
-mulle-sde extension list
+mulle-sde extension show
 ```
 
 ### Create an Objective-C executable project
@@ -117,4 +117,9 @@ mulle-sde init -m foundation/objc-developer executable
 mulle-sde init -m foundation/objc-developer -d foolib library
 ```
 
+### Don't create a project but get ObjC libraries built
 
+```
+mulle-sde init -m foundation/objc-developer none
+mulle-sde craft
+```
