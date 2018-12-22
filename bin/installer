@@ -137,7 +137,7 @@ installer_get_sh_windows_path()
 
 installer_sed_mangle_escape_slashes()
 {
-   sed -e 's|/|\\\\|g'
+   LC_ALL=C sed -e 's|/|\\\\|g'
 }
 
 
@@ -162,23 +162,19 @@ main()
       installer_fail "\"${prefix}\" does not exist"
    fi
 
-   local bin
-   local libexec
+
+   local directory
+
+   directory="`dirname -- "$0"`"
+   cd "${directory}" || installer_fail "Could not cd to \"$directory\" ($PWD)"
+   cd .. || installer_fail "Could not cd to \"..\" ($PWD)"  # compensate for installer being in bin
+
    local share
 
-   cd "`dirname -- "$0"`"
-   cd .. # compensate for installer being in bin
-
-   bin="${prefix}/bin"
    share="${prefix}/share/mulle-sde"
-
    EXTENSION_DIR="${share}/extensions"
-   mkdir -p "${EXTENSION_DIR}" || exit 1
-
-   for i in src/foundation
-   do
-      cp -Rav "${i}" "${EXTENSION_DIR}/" || exit 1
-   done
+   mkdir -p "${EXTENSION_DIR}" 2> /dev/null
+   cp -Rav src/foundation "${EXTENSION_DIR}/" || exit 1
 }
 
 main "$@"
