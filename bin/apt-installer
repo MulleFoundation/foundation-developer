@@ -39,7 +39,7 @@ CURLFLAGS="-fsSL" # taken from homebrew...
 CURL="`command -v curl`"
 if [ -z "${CURL}" ]
 then
-   CURLFLAGS="-O -"
+   CURLFLAGS="-q -O -"
    CURL="`command -v wget`"
    if [ -z "${CURL}" ]
    then
