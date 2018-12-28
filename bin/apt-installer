@@ -1,0 +1,35 @@
+#! /bin/sh -x
+
+#
+# Figure out if curl or wget is installed, prefer curl if available but
+# use wget as fallback and if nothing is installed because it's more
+# lightweight.
+#
+CURLFLAGS="-fsSL" # taken from homebrew...
+CURL="`command -v curl`"
+if [ -z "${CURL}" ]
+then
+   CURLFLAGS="-O -"
+   CURL="`command -v wget`"
+   if [ -z "${CURL}" ]
+   then
+      sudo apt-get -y install wget || exit 1
+   fi
+   CURL="wget"
+fi
+
+
+#
+# Get apt keys for mulle-kybernetik and Codeon and install
+# Will overwrite existing previous keys, which is OK
+#
+"${CURL}" ${CURLFLAGS} https://www.codeon.de/dists/codeon-pub.asc | sudo apt-key add -
+echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null
+"${CURL}" ${CURLFLAGS} "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo apt-key add -
+echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
+
+#
+# Now get the repository info and install or upgrade foundation-developer
+#
+sudo apt-get update
+sudo apt-get -y install foundation-developer

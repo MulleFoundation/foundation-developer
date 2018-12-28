@@ -9,9 +9,10 @@ install mulle-sde and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
 projects. It is very thin package atop of
 [mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
 
-For further details, use [mulle-objc Community](//mulle-objc.github.io) as the starting
-point on the MulleFoundation and **mulle-objc** in general.
-See [mulle-sde Wiki](//github.com/mulle-sde/mulle-sde/wiki) for an introduction to **mulle-sde**.
+For further details, use the [mulle-objc Community](//mulle-objc.github.io)
+page as the starting point on the MulleFoundation and **mulle-objc** in general.
+See [mulle-sde Wiki](//github.com/mulle-sde/mulle-sde/wiki) for an introduction
+to **mulle-sde**.
 
 Extension                 | Type | Description
 --------------------------|------|----------------------------
@@ -39,8 +40,14 @@ ubuntu  | same as debian
 
 #### Debian Mulle kybernetiK and Codeon repositories
 
-For apt installation you need to add the Mulle kybernetiK and Codeon
-debian repositories first:
+You can use this one-liner to run an [installation script](https://github.com/MulleFoundation/foundation-developer/blob/master/bin/apt-installer):
+
+```
+sh < "$(wget -O - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/master/bin/apt-installer)"
+```
+
+Or do it manually. For apt installation you need to add the Mulle kybernetiK
+and Codeon debian repositories first:
 
 ```
 wget -O - https://www.codeon.de/dists/codeon-pub.asc | sudo apt-key add -
@@ -48,6 +55,8 @@ echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sud
 wget -O - "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo apt-key add -
 echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
 sudo apt-get update
+sudo apt-get install foundation-developer
+
 ```
 
 
