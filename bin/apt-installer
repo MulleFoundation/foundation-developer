@@ -1,5 +1,35 @@
 #! /bin/sh -x
 
+if [ ! -w /etc/apt/sources.list.d ]
+then
+   echo "Not enough permissions to write to /etc/apt/sources.list.d (run as sudo ?)" >&2
+   exit 1
+fi
+
+#
+# remove old files if there and possibly broken
+#
+rm /etc/apt/sources.list.d/codeon.de-main.list 2> /dev/null
+rm /etc/apt/sources.list.d/mulle-kybernetik.com-main.list 2> /dev/null
+
+#
+# Figure out os-release name
+#
+if [ -z "${VERSION_CODENAME}" ]
+then
+   VERSION_CODENAME="`sed -n 's/^VERSION_CODENAME=//p' < /etc/os-release`"
+   if [ -z "${codename}" ]
+   then
+      VERSION_CODENAME="`sed -n 's/^VERSION=".*(\(.*\))"/\1/p' < /etc/os-release`"
+   fi
+
+   if [ -z "${VERSION_CODENAME}" ]
+   then
+      echo "Could not figure out versioname from /etc/os-release" >&2
+      exit 1
+   fi
+fi
+
 #
 # Figure out if curl or wget is installed, prefer curl if available but
 # use wget as fallback and if nothing is installed because it's more
@@ -13,7 +43,8 @@ then
    CURL="`command -v wget`"
    if [ -z "${CURL}" ]
    then
-      sudo apt-get -y install wget || exit 1
+      echo "Installing wget..." >&2
+      apt-get -y install wget || exit 1
    fi
    CURL="wget"
 fi
@@ -23,13 +54,17 @@ fi
 # Get apt keys for mulle-kybernetik and Codeon and install
 # Will overwrite existing previous keys, which is OK
 #
-"${CURL}" ${CURLFLAGS} https://www.codeon.de/dists/codeon-pub.asc | sudo apt-key add -
-echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null
-"${CURL}" ${CURLFLAGS} "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo apt-key add -
-echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
+echo "Installing apt keys..." >&2
+
+"${CURL}" ${CURLFLAGS} https://www.codeon.de/dists/codeon-pub.asc | apt-key add -
+echo "deb [arch=amd64] http://download.codeon.de ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/codeon.de-main.list
+"${CURL}" ${CURLFLAGS} "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | apt-key add -
+echo "deb [arch=all] http://www.mulle-kybernetik.com ${VERSION_CODENAME} main" > "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list"
 
 #
 # Now get the repository info and install or upgrade foundation-developer
 #
-sudo apt-get update
-sudo apt-get -y install foundation-developer
+echo "Installing foundation-developer..." >&2
+
+apt-get update
+apt-get -y install foundation-developer

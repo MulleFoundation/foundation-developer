@@ -40,10 +40,10 @@ ubuntu  | same as debian
 
 #### Debian Mulle kybernetiK and Codeon repositories
 
-You can use this one-liner to run an [installation script](https://github.com/MulleFoundation/foundation-developer/blob/master/bin/apt-installer):
+As root can use this one-liner to run an [installation script](https://github.com/MulleFoundation/foundation-developer/blob/release/bin/apt-installer):
 
 ```
-sh < "$(wget -O - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/master/bin/apt-installer)"
+wget -O - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sh
 ```
 
 Or do it manually. For apt installation you need to add the Mulle kybernetiK
