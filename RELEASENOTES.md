@@ -1,3 +1,7 @@
+### 0.14.2
+
+* renamed dependency to dependencies for newest mulle-sde
+
 ### 0.14.1
 
 * modernized mulle-project

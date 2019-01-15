@@ -1,18 +1,28 @@
 # 👒 Objective C with mulle-sde and the MulleFoundation
 
+
 **foundation-developer** is a collection of [mulle-sde](//github.com/mulle-sde/mulle-sde)
 *extensions* to support development of [MulleFoundation](//github.com/MulleFoundation)
-code. As a package **foundation-developer** is also a convenient way to
-install mulle-sde and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
+code. As a package for homebrew (OS X) and apt (Linux) it is also the most
+convenient way to install mulle-sde and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
 
-**foundation-developer** enables the use of `<Foundation/Foundation.h>` in your
+
+Project      | Build Status
+-------------|-----------------------------------
+![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](https://travis-ci.org/MulleFoundation/foundation-developer.svg?branch=release)](https://travis-ci.org/MulleFoundation/foundation-developer)
+
+
+foundation-developer enables the use of `<Foundation/Foundation.h>` in your
 projects. It is very thin package atop of
 [mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
 
+See *Usage* below for a quick introduction to get you up and running.
+
 For further details, use the [mulle-objc Community](//mulle-objc.github.io)
-page as the starting point on the MulleFoundation and **mulle-objc** in general.
+page as the starting point on the MulleFoundation and mulle-objc in general.
 See [mulle-sde Wiki](//github.com/mulle-sde/mulle-sde/wiki) for an introduction
-to **mulle-sde**.
+to mulle-sde.
+
 
 Extension                 | Type | Description
 --------------------------|------|----------------------------
@@ -55,18 +65,37 @@ wget -O - https://raw.githubusercontent.com/MulleFoundation/foundation-developer
 
 
 Or do it manually. For apt installation you need to add the Mulle kybernetiK
-and Codeon debian repositories first:
+and Codeon debian repositories first.
+
+## Add Codeon and Mulle kybernetiK repositories
+
+Install the GPG keys: 
 
 ```
-wget -O - https://www.codeon.de/dists/codeon-pub.asc | sudo apt-key add -
+wget -qO - "https://www.codeon.de/dists/codeon-pub.asc" | sudo apt-key add -
+wget -qO - "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo apt-key add -
+```
+
+Ensure apt is set up to work with https sources:
+
+```
+sudo apt-get install apt-transport-https
+```
+
+Add the apt sources: 
+
+```
 echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null
-wget -O - "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo apt-key add -
 echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
+```
+
+Update apt sources and install foundation-developer:
+
+```
 sudo apt-get update
 sudo apt-get install foundation-developer
 
 ```
-
 
 ### Script
 
@@ -143,6 +172,7 @@ mulle-sde init -m foundation/objc-developer -d foolib library
 mulle-sde init -m foundation/objc-developer none
 mulle-sde craft
 ```
+
 # How to write Objective-C
 
 This is a list of resources useful when starting to write Objective-C.
