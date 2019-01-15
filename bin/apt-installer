@@ -18,7 +18,7 @@ rm /etc/apt/sources.list.d/mulle-kybernetik.com-main.list 2> /dev/null
 if [ -z "${VERSION_CODENAME}" ]
 then
    VERSION_CODENAME="`sed -n 's/^VERSION_CODENAME=//p' < /etc/os-release`"
-   if [ -z "${codename}" ]
+   if [ -z "${VERSION_CODENAME}" ]
    then
       VERSION_CODENAME="`sed -n 's/^VERSION=".*(\(.*\))"/\1/p' < /etc/os-release`"
    fi
@@ -39,7 +39,7 @@ CURLFLAGS="-fsSL" # taken from homebrew...
 CURL="`command -v curl`"
 if [ -z "${CURL}" ]
 then
-   CURLFLAGS="-O -"
+   CURLFLAGS="-q -O -"
    CURL="`command -v wget`"
    if [ -z "${CURL}" ]
    then
