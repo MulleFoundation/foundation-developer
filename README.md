@@ -46,6 +46,14 @@ As root can use this one-liner to run an [installation script](https://github.co
 wget -O - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sh
 ```
 
+> #### Prerequisities
+>
+> Package          | Comment
+> -----------------|--------------------------
+> `wget` or `curl` | to fetch the script (duh)
+> `gnupg`          | **apt-key** may require it
+
+
 Or do it manually. For apt installation you need to add the Mulle kybernetiK
 and Codeon debian repositories first:
 

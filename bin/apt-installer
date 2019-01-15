@@ -44,7 +44,7 @@ then
    if [ -z "${CURL}" ]
    then
       echo "Installing wget..." >&2
-      apt-get -y install wget || exit 1
+      apt-get -qq -y install wget || exit 1
    fi
    CURL="wget"
 fi
@@ -66,5 +66,5 @@ echo "deb [arch=all] http://www.mulle-kybernetik.com ${VERSION_CODENAME} main" >
 #
 echo "Installing foundation-developer..." >&2
 
-apt-get update
-apt-get -y install foundation-developer
+apt-get -qq update
+apt-get -qq -y install foundation-developer
