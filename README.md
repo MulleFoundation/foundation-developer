@@ -170,7 +170,7 @@ yourself though.
 The following examples show how to use the *MulleFoundation* with the
 *mulle-sde* environment. There are instructions available to support a
 [legacy workflow](dox/legacy-workflow.md) for compilation via `Makefile` or
-som such.
+some such.
 
 
 ### Check that the (meta) extensions are found:
