@@ -3,8 +3,8 @@
 
 **foundation-developer** is a collection of [mulle-sde](//github.com/mulle-sde/mulle-sde)
 *extensions* to support development of [MulleFoundation](//github.com/MulleFoundation)
-code. As a package for homebrew (OS X) and apt (Linux) it is also the most
-convenient way to install mulle-sde and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
+code. As a package for **homebrew** (OS X) and **apt** (Linux) it is also the most
+convenient way to install *mulle-sde* and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
 
 
 Project      | Build Status
@@ -12,16 +12,16 @@ Project      | Build Status
 ![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](https://travis-ci.org/MulleFoundation/foundation-developer.svg?branch=release)](https://travis-ci.org/MulleFoundation/foundation-developer)
 
 
-foundation-developer enables the use of `<Foundation/Foundation.h>` in your
+*foundation-developer* enables the use of `<Foundation/Foundation.h>` in your
 projects. It is very thin package atop of
 [mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
 
 See *Usage* below for a quick introduction to get you up and running.
 
 For further details, use the [mulle-objc Community](//mulle-objc.github.io)
-page as the starting point on the MulleFoundation and mulle-objc in general.
+page as the starting point on the *MulleFoundation* and *mulle-objc* in general.
 See [mulle-sde Wiki](//github.com/mulle-sde/mulle-sde/wiki) for an introduction
-to mulle-sde.
+to *mulle-sde*.
 
 
 Extension                 | Type | Description
@@ -31,12 +31,12 @@ foundation/objc-developer | meta | Create Objective-C projects
 
 ## Install
 
-The initial install will only add **mulle-sde** and **mulle-clang** to your
-system. The Foundation itself will be fetched by mulle-sde, when you create
+The initial install will only add *mulle-sde* and *mulle-clang* to your
+system. The Foundation itself will be fetched by *mulle-sde*, when you create
 a new project (see **Usage** below).
 
-Check out the [Wiki](//github.com/MulleFoundation/foundation-developer/wiki)
-if you want to build the MulleFoundation without creating a mulle-sde project.
+> See the [Foundation](//github.com/MulleFoundation/Foundation)
+> if you want to build the *MulleFoundation* without creating a *mulle-sde* project.
 
 
 ### Packages
@@ -82,14 +82,14 @@ Ensure apt is set up to work with https sources:
 sudo apt-get install apt-transport-https
 ```
 
-Add the apt sources: 
+Add the *apt* repository source list: 
 
 ```
 echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null
 echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
 ```
 
-Update apt sources and install foundation-developer:
+Update *apt* and install *foundation-developer*:
 
 ```
 sudo apt-get update
@@ -99,7 +99,7 @@ sudo apt-get install foundation-developer
 
 ### Script
 
-mulle-sde provides an [installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all) script to install the required commands and foundation-developer into `/usr` or some other place.
+*mulle-sde* provides an [installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all) script to install the required commands and foundation-developer into `/usr` or some other place.
 
 You need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang) yourself.
 
