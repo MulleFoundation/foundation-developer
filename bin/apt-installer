@@ -35,6 +35,9 @@ fi
 # use wget as fallback and if nothing is installed because it's more
 # lightweight.
 #
+echo "Checking if wget is needed..." >&2
+
+
 CURLFLAGS="-fsSL" # taken from homebrew...
 CURL="`command -v curl`"
 if [ -z "${CURL}" ]
@@ -44,11 +47,19 @@ then
    if [ -z "${CURL}" ]
    then
       echo "Installing wget..." >&2
-      apt-get -qq -y install wget || exit 1
+      apt-get -q -y install wget || exit 1
    fi
    CURL="wget"
 fi
 
+echo "Checking if gnupg is needed..." >&2
+
+GNUPG="`command -v wget`"
+if [ -z "${GNUPG}" ]
+then
+   echo "Installing gnupg..." >&2
+   apt-get -q -y install gnupg || exit 1
+fi
 
 #
 # Get apt keys for mulle-kybernetik and Codeon and install
@@ -56,15 +67,15 @@ fi
 #
 echo "Installing apt keys..." >&2
 
-"${CURL}" ${CURLFLAGS} https://www.codeon.de/dists/codeon-pub.asc | apt-key add -
-echo "deb [arch=amd64] http://download.codeon.de ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/codeon.de-main.list
-"${CURL}" ${CURLFLAGS} "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | apt-key add -
-echo "deb [arch=all] http://www.mulle-kybernetik.com ${VERSION_CODENAME} main" > "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list"
+"${CURL}" ${CURLFLAGS} https://www.codeon.de/dists/codeon-pub.asc | apt-key add - || exit 1
+echo "deb [arch=amd64] http://download.codeon.de ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/codeon.de-main.list || exit 1
+"${CURL}" ${CURLFLAGS} "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | apt-key add - || exit 1
+echo "deb [arch=all] http://www.mulle-kybernetik.com ${VERSION_CODENAME} main" > "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" || exit 1
 
 #
 # Now get the repository info and install or upgrade foundation-developer
 #
-echo "Installing foundation-developer..." >&2
+echo "Installing foundation-developer packages (up to 1 GB)..." >&2
 
-apt-get -qq update
-apt-get -qq -y install foundation-developer
+apt-get -q update
+apt-get -y install foundation-developer
