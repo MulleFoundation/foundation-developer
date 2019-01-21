@@ -17,9 +17,8 @@ Project      | Build Status
 projects. It is very thin package atop of
 [mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
 
-See *Usage* below for a quick introduction to get you up and running.
-
-For further details, use the [mulle-objc Community](//mulle-objc.github.io)
+See *Usage* below for a quick introduction to get you up and running. For further
+information, use the [mulle-objc Community](//mulle-objc.github.io)
 page as the starting point on the *MulleFoundation* and *mulle-objc* in general.
 See [mulle-sde Wiki](//github.com/mulle-sde/mulle-sde/wiki) for an introduction
 to *mulle-sde*.
@@ -32,17 +31,18 @@ foundation/objc-developer | meta | Create Objective-C projects
 
 # Install
 
+On a clean Linux system, the install with all dependencies (like
+build-essentials and libraries) will need about 2 GB of free space.
+The mulle-objc part of this will be ca. 0.7GB.
+
+> See the [Foundation](//github.com/MulleFoundation/Foundation)
+> if you want to build the *MulleFoundation* library without
+> creating a *mulle-sde* project.
+
+
 The initial install will only add *mulle-sde* and *mulle-clang* to your
 system. The Foundation itself will be fetched by *mulle-sde*, when you create
 a new project (see **Usage** below).
-
-> See the [Foundation](//github.com/MulleFoundation/Foundation)
-> if you want to build the *MulleFoundation* without creating a *mulle-sde* project.
-
-On a clean Linux system, the install with all dependencies (
-like build-essentials and libraries) will need about 2 GB of free space.
-The mulle-objc part of this will be ~0.5GB.
-
 
 ## Packages
 
@@ -72,13 +72,15 @@ Package               | Comment
 apt-get install apt-transport-https gnupg sudo wget
 ```
 
+From here on it's assumed, that sudo is installed. If you don't have *sudo*,
+remove the *sudo* and run everything as `root`
 
 #### One line install
 
 You can use this one-liner to do all the following steps in one:
 
 ```
-wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sh
+wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sudo sh
 ```
 
 
@@ -91,8 +93,6 @@ wget -qO - "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo 
 
 #### Add the *apt* repository source list:
 
-If you don't have *sudo*, remove the *sudo* and run as `root`:
-
 ```
 echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null
 echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
@@ -103,7 +103,6 @@ Now you are ready to install *foundation-developer*:
 ```
 sudo apt-get update
 sudo apt-get install foundation-developer
-
 ```
 
 

@@ -1,3 +1,7 @@
+### 0.14.5
+
+* fix Dockerfile for bionic
+
 ### 0.14.4
 
 * add missing dependencies file
