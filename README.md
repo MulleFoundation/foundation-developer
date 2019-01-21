@@ -44,6 +44,13 @@ The initial install will only add *mulle-sde* and *mulle-clang* to your
 system. The Foundation itself will be fetched by *mulle-sde*, when you create
 a new project (see **Usage** below).
 
+There is a variety of installation methods:
+
+* **Packages**
+* **Docker**
+* **Script**
+
+
 ## Packages
 
 OS      | Command
@@ -57,8 +64,7 @@ docker  | There is a dockerfile available (see below)
 ### Linux: Add Codeon and Mulle kybernetiK repositories to apt
 
 
-
-#### Prerequisities
+#### Prerequisites
 
 Package               | Comment
 ----------------------|--------------------------
@@ -76,6 +82,7 @@ apt-get install apt-transport-https gnupg lsb-release sudo wget
 From here on it's assumed, that sudo is installed. If you don't have *sudo*,
 remove the *sudo* and run everything as `root`
 
+
 #### One line install
 
 You can use this one-liner to do all the following steps in one:
@@ -86,6 +93,8 @@ wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-develope
 
 
 #### Install the GPG keys:
+
+Otherwise first add the necessary key to *apt*:
 
 ```
 wget -qO - "https://www.codeon.de/dists/codeon-pub.asc" | sudo apt-key add -
@@ -107,12 +116,23 @@ sudo apt-get install foundation-developer
 ```
 
 
-### Other OS: Script
+### Docker
+
+There is a [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile) in the project. To build and run an ephemeral container named
+`foundation` based on ubuntu, do:
+
+```
+sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
+sudo docker run -i -t --rm foundation
+```
+
+## Script
 
 *mulle-sde* provides an
 [installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all)
-script to install the *foundation-developer* into `/usr` (or some other place).
-This is suitable for environments without supported package managers.
+script to install *foundation-developer* into `/usr` (or some other place).
+This is suitable for environments without supported package managers like for
+instance *Fedora* or *FreeBSD*.
 
 
 #### Install into /usr with sudo
@@ -143,20 +163,13 @@ You will need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang)
 yourself though.
 
 
-### Docker
-
-There is a [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile) in the project.
-
-This will build and run an ephemeral container named `foundation` on
-ubuntu:
-
-```
-sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
-sudo docker run -i -t --rm foundation
-```
-
-
 # Usage
+
+The following examples show how to use the *MulleFoundation* with the
+*mulle-sde* environment. There are instructions available to support a
+[legacy workflow](dox/legacy-install.md) for compilation via `Makefile` or
+som such.
+
 
 ### Check that the (meta) extensions are found:
 
@@ -172,11 +185,20 @@ cd foo
 mulle-sde init -m foundation/objc-developer executable
 ```
 
+Just follow the instructions *mulle-sde* prints.
+
+> There will be an error because of a missing MulleObjCDecimalLibrary. This
+> is normal.
+
+
 ### Create an Objective-C library project
 
 ```
-mulle-sde init -m foundation/objc-developer -d foolib library
+mulle-sde init -d foolib -m foundation/objc-developer library
+cd foolib
+mulle-sde craft
 ```
+
 
 ### Don't create a project but get ObjC libraries built
 

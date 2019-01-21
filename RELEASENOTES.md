@@ -1,3 +1,7 @@
+### 0.14.7
+
+* move legacy info from Foundation to here
+
 ### 0.14.6
 
 * need `lsb_release` in Dockerfile
