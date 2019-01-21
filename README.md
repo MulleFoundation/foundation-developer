@@ -53,15 +53,17 @@ There is a variety of installation methods:
 
 ## Packages
 
-OS      | Command
---------|------------------------------------
-macos   | `brew install mulle-kybernetik/software/foundation-developer`
-debian  | `sudo apt-get -y install foundation-developer` (but see below)
-ubuntu  | same as debian
-docker  | There is a dockerfile available (see below)
+OS      | Package manager | Command
+--------|-----------------|-----------------------------------
+macos   | homebrew        | `brew install mulle-kybernetik/software/foundation-developer`
+debian  | apt             | `sudo apt-get -y install foundation-developer` (but see below)
+ubuntu  | apt             | `sudo apt-get -y install foundation-developer` (but see below)
 
 
-### Linux: Add Codeon and Mulle kybernetiK repositories to apt
+### apt
+
+As prerequisites there are some very basic packages that need to be installed
+first. They are usually present on anything but a barebones system.
 
 
 #### Prerequisites
@@ -126,7 +128,7 @@ sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundati
 sudo docker run -i -t --rm foundation
 ```
 
-## Script
+### Script
 
 *mulle-sde* provides an
 [installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all)
@@ -167,7 +169,7 @@ yourself though.
 
 The following examples show how to use the *MulleFoundation* with the
 *mulle-sde* environment. There are instructions available to support a
-[legacy workflow](dox/legacy-install.md) for compilation via `Makefile` or
+[legacy workflow](dox/legacy-workflow.md) for compilation via `Makefile` or
 som such.
 
 

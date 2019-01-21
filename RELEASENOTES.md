@@ -1,3 +1,7 @@
+### 0.14.8
+
+* even nicer README
+
 ### 0.14.7
 
 * move legacy info from Foundation to here
