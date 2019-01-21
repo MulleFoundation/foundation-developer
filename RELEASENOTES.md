@@ -1,3 +1,7 @@
+### 0.14.6
+
+* need `lsb_release` in Dockerfile
+
 ### 0.14.5
 
 * fix Dockerfile for bionic

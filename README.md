@@ -64,12 +64,13 @@ Package               | Comment
 ----------------------|--------------------------
 `wget` or `curl`      | to fetch stuff
 `gnupg`               | *apt-key* may require it
+`lsb-release`         | For the repository source list
 `apt-transport-https` | To let *apt-get* fetch via https
 `sudo`                | Or run everything as root
 
 
 ```
-apt-get install apt-transport-https gnupg sudo wget
+apt-get install apt-transport-https gnupg lsb-release sudo wget
 ```
 
 From here on it's assumed, that sudo is installed. If you don't have *sudo*,
@@ -111,11 +112,7 @@ sudo apt-get install foundation-developer
 *mulle-sde* provides an
 [installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all)
 script to install the *foundation-developer* into `/usr` (or some other place).
-
-You will need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang)
-yourself though.
-
-This is suitable for environments without supported package managers:
+This is suitable for environments without supported package managers.
 
 
 #### Install into /usr with sudo
@@ -142,7 +139,8 @@ mulle-c/mulle-c-developer;latest" \
 SDE_PROJECTS="mulle-sde-developer;latest" ./installer-all ~
 ```
 
-You need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang) yourself.
+You will need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang)
+yourself though.
 
 
 ### Docker

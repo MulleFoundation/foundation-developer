@@ -6,7 +6,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
    && apt-get update \
    && apt-get -y install locales \
    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && locale-gen \
-   && apt-get -y install apt-transport-https gnupg sudo wget \
+   && apt-get -y install apt-transport-https gnupg sudo wget lsb-release \
 \
    && wget -qO - https://www.codeon.de/dists/codeon-pub.asc | apt-key add - \
    && echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null \
