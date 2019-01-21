@@ -1,10 +1,11 @@
 # 👒 Objective C with mulle-sde and the MulleFoundation
 
 
-**foundation-developer** is a collection of [mulle-sde](//github.com/mulle-sde/mulle-sde)
-*extensions* to support development of [MulleFoundation](//github.com/MulleFoundation)
+**foundation-developer** is a collection of *mulle-sde extensions* to support development 
+with the [MulleFoundation](//github.com/MulleFoundation)
 code. As a package for **homebrew** (OS X) and **apt** (Linux) it is also the most
-convenient way to install *mulle-sde* and [mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
+convenient way to install [mulle-sde](//github.com/mulle-sde/mulle-sde) and 
+[mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
 
 
 Project      | Build Status
