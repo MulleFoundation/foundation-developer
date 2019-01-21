@@ -82,7 +82,7 @@ apt-get install apt-transport-https gnupg lsb-release sudo wget
 ```
 
 From here on it's assumed, that sudo is installed. If you don't have *sudo*,
-remove the *sudo* and run everything as `root`
+edit out the *sudo* from the command lines and run everything as `root`
 
 
 #### One line install
