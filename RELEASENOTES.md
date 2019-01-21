@@ -1,3 +1,7 @@
+### 0.14.4
+
+* add missing dependencies file
+
 ### 0.14.3
 
 * improve apt-installer experience improve README

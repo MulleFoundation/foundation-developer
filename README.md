@@ -39,7 +39,9 @@ a new project (see **Usage** below).
 > See the [Foundation](//github.com/MulleFoundation/Foundation)
 > if you want to build the *MulleFoundation* without creating a *mulle-sde* project.
 
-> #### On a clean Linux, the install will use up about 1 GB.
+On a clean Linux system, the install with all dependencies (
+like build-essentials and libraries) will need about 2 GB of free space.
+The mulle-objc part of this will be ~0.5GB.
 
 
 ## Packages
@@ -54,11 +56,6 @@ docker  | There is a dockerfile available (see below)
 
 ### Linux: Add Codeon and Mulle kybernetiK repositories to apt
 
-You can use this one-liner to do all the following steps in one:
-
-```
-wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sh
-```
 
 
 #### Prerequisities
@@ -68,11 +65,20 @@ Package               | Comment
 `wget` or `curl`      | to fetch stuff
 `gnupg`               | *apt-key* may require it
 `apt-transport-https` | To let *apt-get* fetch via https
-`sudo`                | sudo if you are not running as root
+`sudo`                | Or run everything as root
 
 
 ```
-sudo apt-get install apt-transport-https gnupg sudo wget
+apt-get install apt-transport-https gnupg sudo wget
+```
+
+
+#### One line install
+
+You can use this one-liner to do all the following steps in one:
+
+```
+wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sh
 ```
 
 
