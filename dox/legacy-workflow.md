@@ -3,7 +3,7 @@
 ### Install Foundation as a shared library
 
 To support development outside of the *mulle-sde* workflow, you can
-build a "whole-archive" shared library of the MulleFoundation with all its
+build a "whole-archive" shared library of the *MulleFoundation* with all its
 dependencies such as [mulle-core](//github.com/mulle-core) and
 [mulle-objc-runtime](//github.com/mulle-objc-runtime) included.
 
