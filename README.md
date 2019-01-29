@@ -35,9 +35,8 @@ On a clean Linux system, the install with all dependencies (like
 build-essentials and libraries) will need about 2 GB of free space.
 The mulle-objc part of this will be ca. 0.7GB.
 
-> See the [Foundation](//github.com/MulleFoundation/Foundation)
-> if you want to build the *MulleFoundation* library without
-> creating a *mulle-sde* project.
+> See [Legacy Workflow](//github.com/MulleFoundation/foundation-developer/blob/release/dox/legacy-workflow.md)
+> if you want to build the *MulleFoundation* library outside of *mulle-sde* projects.
 
 
 The initial install will only add *mulle-sde* and *mulle-clang* to your
