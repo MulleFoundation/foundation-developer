@@ -212,6 +212,13 @@ mulle-sde craft
 
 This is a list of resources useful when starting to write Objective-C.
 
+### Learn Objective-C, Tutorialspoint
+
+[Objective-C Quick Guide](https://www.tutorialspoint.com/objective_c/objective_c_quick_guide.htm) looks like
+a good tutorial start, Iignore the parts about "gcc", "MacOSX", "GNUStep" though. They also have a much larger tutorial, 
+where you should ignore "Blocks", "Posing", and anything mentioning "ARC".
+
+
 ### Programming with Objective-C, by Apple
 
 [Programming With Objective C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html) covers all the basics. Ignore the chapter about "Blocks", everything else should be fine.
