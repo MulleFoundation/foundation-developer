@@ -44,9 +44,8 @@ On a clean Linux system, the install with all dependencies (like
 build-essentials and libraries) will need about 2 GB of free space.
 The mulle-objc part of this will be ca. 0.7GB.
 
-> See the [Foundation](//github.com/MulleFoundation/Foundation)
-> if you want to build the *MulleFoundation* library without
-> creating a *mulle-sde* project.
+> See [Legacy Workflow](//github.com/MulleFoundation/foundation-developer/blob/release/dox/legacy-workflow.md)
+> if you want to build the *MulleFoundation* library outside of *mulle-sde* projects.
 
 
 The initial install will only add *mulle-sde* and *mulle-clang* to your
@@ -91,7 +90,7 @@ apt-get install apt-transport-https gnupg lsb-release sudo wget
 ```
 
 From here on it's assumed, that sudo is installed. If you don't have *sudo*,
-remove the *sudo* and run everything as `root`
+edit out the *sudo* from the command lines and run everything as `root`
 
 
 #### One line install
@@ -193,7 +192,7 @@ yourself though.
 The following examples show how to use the *MulleFoundation* with the
 *mulle-sde* environment. There are instructions available to support a
 [legacy workflow](dox/legacy-workflow.md) for compilation via `Makefile` or
-som such.
+some such.
 
 
 ### Check that the (meta) extensions are found:
@@ -235,6 +234,13 @@ mulle-sde craft
 ## How to write Objective-C
 
 This is a list of resources useful when starting to write Objective-C.
+
+### Learn Objective-C, Tutorialspoint
+
+[Objective-C Quick Guide](https://www.tutorialspoint.com/objective_c/objective_c_quick_guide.htm) looks like
+a good tutorial start, Iignore the parts about "gcc", "MacOSX", "GNUStep" though. They also have a much larger tutorial, 
+where you should ignore "Blocks", "Posing", and anything mentioning "ARC".
+
 
 ### Programming with Objective-C, by Apple
 
