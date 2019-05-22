@@ -1,3 +1,7 @@
+### 0.14.12
+
+* increase verbosity of travis...
+
 ### 0.14.11
 
 * reduce verbosity of travis again
