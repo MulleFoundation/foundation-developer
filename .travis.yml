@@ -3,8 +3,15 @@ language: c
 matrix:
   include:
     - os: linux
-      dist: xenial
+      dist: trusty
       sudo: required
+      addons:
+         apt:
+            packages:
+               - cmake
+               - cmake-data
+            sources:
+               - sourceline: 'ppa:george-edison55/cmake-3.x'
       before_install:
         - curl -sS "https://www.codeon.de/dists/codeon-pub.asc" | sudo apt-key add -
         - echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null
@@ -22,6 +29,7 @@ matrix:
 
 script:
   - mulle-sde version
+  - mulle-clang --version
   - mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" extension show
   - mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="$PWD/src" init -d exe -m foundation/objc-developer executable
   - cd exe

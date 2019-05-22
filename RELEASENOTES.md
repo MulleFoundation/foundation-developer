@@ -1,3 +1,17 @@
+### 0.14.14
+
+* rename build to kitchen
+* back to trusty, since xenial has no 7.0.0.0 mulle-clang
+* increase verbosity of travis...
+
+### 0.14.13
+
+* back to trusty, since xenial has no 7.0.0.0 mulle-clang
+
+### 0.14.12
+
+* increase verbosity of travis...
+
 ### 0.14.11
 
 * reduce verbosity of travis again
