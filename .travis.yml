@@ -7,7 +7,7 @@ matrix:
       sudo: required
       before_install:
         - curl -sS "https://www.codeon.de/dists/codeon-pub.asc" | sudo apt-key add -
-        - echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list
+        - echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null
         - curl -sS "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo apt-key add -
         - echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
         - sudo apt-get update
@@ -25,7 +25,7 @@ script:
   - mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" extension show
   - mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="$PWD/src" init -d exe -m foundation/objc-developer executable
   - cd exe
-  - mulle-sde -vvv -ld -lx craft --release
+  - mulle-sde craft --release
   - ./build/Release/exe
   - cd ..
   - mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="$PWD/src" init -d lib -m foundation/objc-developer library

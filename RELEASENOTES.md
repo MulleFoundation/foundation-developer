@@ -1,3 +1,7 @@
+### 0.14.11
+
+* reduce verbosity of travis again
+
 ### 0.14.10
 
 * Various small improvements
