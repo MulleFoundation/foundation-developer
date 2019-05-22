@@ -1,3 +1,7 @@
+### 0.14.10
+
+* Various small improvements
+
 ### 0.14.9
 
 * support for objc-porter (available with 0.15)
