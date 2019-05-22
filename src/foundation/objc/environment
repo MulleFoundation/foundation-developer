@@ -1,0 +1,6 @@
+#
+# noob it up a little, to only have ObjC headers for
+# Foundation as the default
+#
+MULLE_SOURCETREE_TO_C_INCLUDE_FILE="DISABLE"
+MULLE_SOURCETREE_TO_C_PRIVATEINCLUDE_FILE="DISABLE"

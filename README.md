@@ -28,6 +28,15 @@ Extension                 | Type | Description
 --------------------------|------|----------------------------
 foundation/objc-developer | meta | Create Objective-C projects
 
+### Table of Contents
+
+- [Install](#Install)
+- - [Packages](#Packages)
+- - [Script](#Script)
+- - [Docker](#Docker)
+- [Usage](#Usage)
+- [How to write Objective-C](#How-to-write-Objective-C)
+- [Relations](#Relations)
 
 # Install
 
@@ -136,6 +145,16 @@ script to install *foundation-developer* into `/usr` (or some other place).
 This is suitable for environments without supported package managers like for
 instance *Fedora* or *FreeBSD*.
 
+Prerequisites         | Comment
+----------------------|--------------------------
+`build-essential`     | The usual compiler tools like cc, ar, nm
+`curl`                | To fetch stuff, or substitute with wget
+`cmake`               | Shoot for cmake 3.1 or higher
+`sudo`                | Or run everything as root
+`uuid-runtime`        | `uuidgen` is needed by mulle-sde
+`bsdmainutils`        | Needed for `column`. A dependency that should go away...
+`less`                | Should be optional, but isn't right now
+
 
 #### Install into /usr with sudo
 
@@ -146,7 +165,9 @@ sudo OTHER_PROJECTS="MulleFoundation/foundation-developer;latest \
 MulleFoundation/mulle-foundation-developer;latest \
 mulle-objc/mulle-objc-developer;latest \
 mulle-c/mulle-c-developer;latest" \
-SDE_PROJECTS="mulle-sde-developer;latest" ./installer-all /usr
+SDE_PROJECTS="mulle-sde-developer;latest \
+mulle-test;latest" \
+./installer-all /usr
 ```
 
 #### Install into ${HOME} (without sudo)
@@ -158,14 +179,16 @@ OTHER_PROJECTS="MulleFoundation/foundation-developer;latest \
 MulleFoundation/mulle-foundation-developer;latest \
 mulle-objc/mulle-objc-developer;latest \
 mulle-c/mulle-c-developer;latest" \
-SDE_PROJECTS="mulle-sde-developer;latest" ./installer-all ~
+SDE_PROJECTS="mulle-sde-developer;latest"
+mulle-test;latest" \
+./installer-all ~
 ```
 
 You will need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang)
 yourself though.
 
 
-# Usage
+## Usage
 
 The following examples show how to use the *MulleFoundation* with the
 *mulle-sde* environment. There are instructions available to support a
