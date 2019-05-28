@@ -1,2 +1,3 @@
 # ObjC library
 --objc https://github.com/MulleFoundation/Foundation/archive/latest.tar.gz
+--marks no-link,no-require,no-header,no-cmakeinherit https://github.com/MulleFoundation/mulle-testgen/archive/latest.tar.gz
