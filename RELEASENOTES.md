@@ -1,3 +1,7 @@
+### 0.15.1
+
+* fix xz:optional to xz
+
 ## 0.15.0
 
 * Various small improvements

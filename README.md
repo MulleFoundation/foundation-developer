@@ -129,12 +129,11 @@ sudo apt-get install foundation-developer
 
 ### Docker
 
-There is a [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile) in the project. To build and run an ephemeral container named
-`foundation` based on ubuntu, do:
+There is a [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile) in the project. To build and run an ephemeral development container named `foundation` based on ubuntu, do:
 
 ```
 sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
-sudo docker run -i -t --rm foundation
+sudo docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t --rm foundation
 ```
 
 ### Script
