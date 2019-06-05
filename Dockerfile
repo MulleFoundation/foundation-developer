@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:disco
 
 # make it fresh
 # add en UTF-8 as a locale
