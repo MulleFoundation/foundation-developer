@@ -157,7 +157,7 @@ Prerequisites         | Comment
 
 #### Install into /usr with sudo
 
-```
+``` sh
 curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all' && \
 chmod 755 installer-all && \
 sudo OTHER_PROJECTS="MulleFoundation/foundation-developer;latest \
@@ -171,14 +171,14 @@ mulle-test;latest" \
 
 #### Install into ${HOME} (without sudo)
 
-```
+``` sh
 curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all' && \
 chmod 755 installer-all && \
 OTHER_PROJECTS="MulleFoundation/foundation-developer;latest \
 MulleFoundation/mulle-foundation-developer;latest \
 mulle-objc/mulle-objc-developer;latest \
 mulle-c/mulle-c-developer;latest" \
-SDE_PROJECTS="mulle-sde-developer;latest" \
+SDE_PROJECTS="mulle-sde-developer;latest \
 mulle-test;latest" \
 ./installer-all ~ no
 ```
