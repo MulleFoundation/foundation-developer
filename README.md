@@ -178,9 +178,9 @@ OTHER_PROJECTS="MulleFoundation/foundation-developer;latest \
 MulleFoundation/mulle-foundation-developer;latest \
 mulle-objc/mulle-objc-developer;latest \
 mulle-c/mulle-c-developer;latest" \
-SDE_PROJECTS="mulle-sde-developer;latest"
+SDE_PROJECTS="mulle-sde-developer;latest" \
 mulle-test;latest" \
-./installer-all ~
+./installer-all ~ no
 ```
 
 You will need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang)
