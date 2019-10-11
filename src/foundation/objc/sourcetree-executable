@@ -1,0 +1,4 @@
+#
+--nodetype 'tar' --branch '${FOUNDATION_BRANCH:-latest}' --url '${FOUNDATION_URL:-https://github.com/MulleFoundation/Foundation/archive/${MULLE_BRANCH}.tar.gz}' 'Foundation'
+#
+--nodetype 'tar' --marks no-dynamic-link,no-intermediate-link,no-header,no-singlephase --branch '${FOUNDATION_STARTUP_BRANCH:-latest}' --url '${FOUNDATION_STARTUP_URL:-https://github.com/MulleFoundation/Foundation-startup/archive/${MULLE_BRANCH}.tar.gz}' 'Foundation-startup'

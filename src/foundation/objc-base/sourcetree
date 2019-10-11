@@ -1,0 +1,2 @@
+--nodetype 'tar' --marks no-singlephase --branch '${FOUNDATION_BRANCH:-latest}' --url '${FOUNDATION_URL:-https://github.com/MulleFoundation/Foundation/archive/${MULLE_BRANCH}.tar.gz}' 'Foundation'
+
