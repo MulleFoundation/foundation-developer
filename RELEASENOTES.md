@@ -1,6 +1,6 @@
 ## 0.16.0
 
-* docker based on bionic now
+* docker based on disco now
 
 
 ### 0.15.1
