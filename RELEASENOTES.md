@@ -1,3 +1,8 @@
+## 0.16.0
+
+* docker based on bionic now
+
+
 ### 0.15.1
 
 * fix xz:optional to xz
