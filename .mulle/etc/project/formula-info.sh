@@ -8,6 +8,6 @@ DESC="👒 Objective C with mulle-sde and the mulle-objc Foundation"
 # LANGUAGE="c"             # c,cpp, objc, bash ...
 # NAME="${PROJECT}"        # formula filename without .rb extension
 
-DEPENDENCIES='${MULLE_SDE_TAP}mulle-foundation-developer'
+DEPENDENCIES='${MULLE_FOUNDATION_TAP}mulle-foundation-developer'
 
 DEBIAN_DEPENDENCIES='mulle-foundation-developer'
