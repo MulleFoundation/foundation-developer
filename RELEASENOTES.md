@@ -1,3 +1,7 @@
+### 0.17.1
+
+* add foundation/travis for orthogonality
+
 ## 0.17.0
 
 * new objc-porter extension
