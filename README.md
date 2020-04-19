@@ -32,12 +32,49 @@ foundation/objc-developer | meta | Create Objective-C projects
 
 ### Table of Contents
 
+- [Usage](#Usage)
 - [Install](#Install)
 - - [Packages](#Packages)
 - - [Script](#Script)
 - - [Docker](#Docker)
-- [Usage](#Usage)
 - [Relations](#Relations)
+
+
+## Usage
+
+The following examples show how to use the *MulleFoundation* with the
+*mulle-sde* environment. You can also use the
+[legacy workflow](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_legacy.html)
+with `Makefiles` or some such.
+
+
+### Check that the (meta) extensions are found:
+
+```
+mulle-sde extension show
+```
+
+### Create an Objective-C executable project
+
+```
+mkdir foo
+cd foo
+mulle-sde init -m foundation/objc-developer executable
+```
+
+Just follow the instructions *mulle-sde* prints.
+
+> There will be an error because of a missing MulleObjCDecimalLibrary. This
+> is normal.
+
+
+### Create an Objective-C library project
+
+```
+mulle-sde init -d foolib -m foundation/objc-developer library
+cd foolib
+mulle-sde craft
+```
 
 
 # Install
@@ -187,50 +224,6 @@ mulle-test;latest" \
 You will need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang)
 yourself though.
 
-
-## Usage
-
-The following examples show how to use the *MulleFoundation* with the
-*mulle-sde* environment. There are instructions available to support a
-[legacy workflow](dox/legacy-workflow.md) for compilation via `Makefile` or
-some such.
-
-
-### Check that the (meta) extensions are found:
-
-```
-mulle-sde extension show
-```
-
-### Create an Objective-C executable project
-
-```
-mkdir foo
-cd foo
-mulle-sde init -m foundation/objc-developer executable
-```
-
-Just follow the instructions *mulle-sde* prints.
-
-> There will be an error because of a missing MulleObjCDecimalLibrary. This
-> is normal.
-
-
-### Create an Objective-C library project
-
-```
-mulle-sde init -d foolib -m foundation/objc-developer library
-cd foolib
-mulle-sde craft
-```
-
-
-### Don't create a project but get ObjC libraries built
-
-```
-mulle-sde init -m foundation/objc-developer none
-mulle-sde craft
-```
 
 ## Relations
 
