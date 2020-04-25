@@ -193,7 +193,7 @@ Prerequisites         | Comment
 `less`                | Should be optional, but isn't right now
 
 
-#### Install into /usr with sudo
+#### Install into /usr/local with sudo
 
 ``` sh
 curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all' && \
@@ -204,7 +204,7 @@ mulle-objc/mulle-objc-developer;latest \
 mulle-c/mulle-c-developer;latest" \
 SDE_PROJECTS="mulle-sde-developer;latest \
 mulle-test;latest" \
-./installer-all /usr
+./installer-all /usr/local
 ```
 
 #### Install into ${HOME} (without sudo)
