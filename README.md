@@ -124,7 +124,7 @@ Package               | Comment
 `lsb-release`         | For the repository source list
 `apt-transport-https` | To let *apt-get* fetch via https
 `sudo`                | Or run everything as root
-
+`libncurses5`         | Debian only (?)
 
 ```
 apt-get install apt-transport-https gnupg lsb-release sudo wget
