@@ -40,23 +40,23 @@ jobs:
         mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" extension show
 
 
-    - name: MulleFoundation Library
+    - name: Foundation Library
       run: |
-        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" init -d lib -m mulle-objc/objc-developer library &&
+        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" init -d lib -m foundation/objc-developer library &&
         cd lib &&
         mulle-sde hostname &&
         mulle-sde environment &&
         echo "Adding environment-host-ci-prerelease file from Foundation/test" >&2 &&
-        curl -L --output .mulle/etc/env/environment-host-ci-prerelease.sh "https://raw.githubusercontent.com/mulle-objc/Foundation/prerelease/test/.mulle/etc/env/environment-host-ci-prerelease.sh" >&2 &&
+        curl -L --output .mulle/etc/env/environment-host-ci-prerelease.sh "https://raw.githubusercontent.com/Foundation/Foundation/prerelease/test/.mulle/etc/env/environment-host-ci-prerelease.sh" >&2 &&
         mulle-sde craft
 
-    - name: MulleFoundation Executable
+    - name: Foundation Executable
       run: |
         mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" extension show &&
-        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" init -d exe -m mulle-objc/objc-developer executable &&
+        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" init -d exe -m foundation/objc-developer executable &&
         cd exe &&
         echo "Adding environment-host-ci-prerelease file from Foundation/test" >&2 &&
-        curl -L --output .mulle/etc/env/environment-host-ci-prerelease.sh "https://raw.githubusercontent.com/mulle-objc/Foundation/prerelease/test/.mulle/etc/env/environment-host-ci-prerelease.sh" >&2 &&
+        curl -L --output .mulle/etc/env/environment-host-ci-prerelease.sh "https://raw.githubusercontent.com/Foundation/Foundation/prerelease/test/.mulle/etc/env/environment-host-ci-prerelease.sh" >&2 &&
         mulle-sde craft --release &&
         "./kitchen/Release/exe"
 
