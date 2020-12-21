@@ -1,3 +1,8 @@
+## 0.18.0
+
+* Various small improvements
+
+
 ### 0.17.1
 
 * add foundation/travis for orthogonality
