@@ -2,12 +2,13 @@
 
 #### 👒 Objective C with mulle-sde and the MulleFoundation
 
-
 **foundation-developer** is a collection of *mulle-sde extensions* to support development
-with the [MulleFoundation](//github.com/MulleFoundation)
-code. As a package for **homebrew** (OS X) and **apt** (Linux) it is also the most
-convenient way to install [mulle-sde](//github.com/mulle-sde/mulle-sde) and
-[mulle-clang](//github.com/Codeon-GmbH/mulle-clang).
+with the [MulleFoundation](//github.com/MulleFoundation). You need to install the
+compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) and the 
+debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
+
+As a package for **homebrew** (OS X) and **apt** (Linux) it is also the most
+convenient way to install [mulle-sde](//github.com/mulle-sde/mulle-sde).
 
 
 Project      | Build Status
@@ -81,23 +82,16 @@ mulle-sde craft
 
 # Install
 
-On a clean Linux system, the install with all dependencies (like
-build-essentials and libraries) will need about 2 GB of free space.
-The mulle-objc part of this will be ca. 0.7GB.
-
-> See [Legacy Workflow](//github.com/MulleFoundation/foundation-developer/blob/release/dox/legacy-workflow.md)
-> if you want to build the *MulleFoundation* library outside of *mulle-sde* projects.
-
-
-The initial install will only add *mulle-sde* and *mulle-clang* to your
-system. The Foundation itself will be fetched by *mulle-sde*, when you create
-a new project (see **Usage** below).
+The initial install will only add *mulle-sde* to your system. The Foundation 
+itself will be fetched by *mulle-sde*, when you create a new project 
+(see **Usage** below).
 
 There is a variety of installation methods:
 
 * **Packages**
 * **Docker**
 * **Script**
+
 
 
 ## Packages
@@ -130,6 +124,9 @@ Package               | Comment
 apt-get install apt-transport-https gnupg lsb-release sudo wget
 ```
 
+You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) 
+and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
+
 From here on it's assumed, that sudo is installed. If you don't have *sudo*,
 edit out the *sudo* from the command lines and run everything as `root`
 
@@ -148,14 +145,12 @@ wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-develope
 Otherwise first add the necessary key to *apt*:
 
 ```
-wget -qO - "https://www.codeon.de/dists/codeon-pub.asc" | sudo apt-key add -
 wget -qO - "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo apt-key add -
 ```
 
 #### Add the *apt* repository source list:
 
 ```
-echo "deb [arch=amd64] http://download.codeon.de `lsb_release -c -s` main" | sudo tee /etc/apt/sources.list.d/codeon.de-main.list > /dev/null
 echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
 ```
 
@@ -194,6 +189,8 @@ Prerequisites         | Comment
 `bsdmainutils`        | Needed for `column`. A dependency that should go away...
 `less`                | Should be optional, but isn't right now
 
+You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) 
+and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
 
 #### Install into /usr/local with sudo
 
