@@ -1,5 +1,7 @@
 #! /bin/sh -x
 
+MULLE_CLANG_VERSION="${MULLE_CLANG_VERSION:-11.0.0.0}"
+
 if [ ! -w /etc/apt/sources.list.d ]
 then
    echo "Not enough permissions to write to /etc/apt/sources.list.d (run as sudo ?)" >&2
@@ -9,7 +11,6 @@ fi
 #
 # remove old files if there and possibly broken
 #
-rm /etc/apt/sources.list.d/codeon.de-main.list 2> /dev/null
 rm /etc/apt/sources.list.d/mulle-kybernetik.com-main.list 2> /dev/null
 
 #
@@ -37,7 +38,6 @@ fi
 #
 echo "Checking if wget is needed..." >&2
 
-
 CURLFLAGS="-fsSL" # taken from homebrew...
 CURL="`command -v curl`"
 if [ -z "${CURL}" ]
@@ -47,6 +47,8 @@ then
    if [ -z "${CURL}" ]
    then
       echo "Installing wget..." >&2
+      # need apt-get update if not run recently
+      [ -z "$(find -H /var/lib/apt/lists -maxdepth 0 -mtime -7)" ] && apt-get update
       apt-get -q -y install wget || exit 1
    fi
    CURL="wget"
@@ -54,10 +56,12 @@ fi
 
 echo "Checking if gnupg is needed..." >&2
 
-GNUPG="`command -v wget`"
+GNUPG="`command -v gnupg`"
 if [ -z "${GNUPG}" ]
 then
    echo "Installing gnupg..." >&2
+   # need apt-get update if not run recently
+   [ -z "$(find -H /var/lib/apt/lists -maxdepth 0 -mtime -7)" ] && apt-get update
    apt-get -q -y install gnupg || exit 1
 fi
 
@@ -67,15 +71,44 @@ fi
 #
 echo "Installing apt keys..." >&2
 
-"${CURL}" ${CURLFLAGS} https://www.codeon.de/dists/codeon-pub.asc | apt-key add - || exit 1
-echo "deb [arch=amd64] http://download.codeon.de ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/codeon.de-main.list || exit 1
 "${CURL}" ${CURLFLAGS} "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | apt-key add - || exit 1
 echo "deb [arch=all] http://www.mulle-kybernetik.com ${VERSION_CODENAME} main" > "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" || exit 1
 
 #
 # Now get the repository info and install or upgrade foundation-developer
 #
-echo "Installing foundation-developer packages (up to 1 GB)..." >&2
+echo "Installing foundation-developer packages ..." >&2
 
-apt-get -q update
-apt-get -y install foundation-developer
+apt-get -q update &&
+apt-get -y install foundation-developer || exit 1
+
+case "${VERSION_CODENAME}" in
+   focal|bullseye)
+      codename="bullseye"
+   ;;
+
+   eoan|disco|cosmic|bionic|buster)
+      codename="buster"
+   ;;
+
+   artful|zesty|yakkety|xenial|stretch)
+      codename="stretch"
+   ;;
+
+   *)
+      echo "Unsupported debian/ubuntu release  ${LSB_RELEASE}" >&2
+      exit 1
+   ;;
+esac
+
+# https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/11.0.0.0-RC2/mulle-clang-11.0.0.0-buster-amd64.deb
+filename="mulle-clang-${MULLE_CLANG_VERSION}-${codename}-amd64.deb"
+
+url="https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/${MULLE_CLANG_VERSION}"
+url="${url}/${filename}"
+
+echo "Downloading ${url} ..." >&2
+
+${CURL} ${CURLFLAGS} "${url}" > "${filename}" &&
+echo "Installing mulle-clang ..." >&2 &&
+dpkg --install "${filename}" || exit 1
