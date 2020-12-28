@@ -4,7 +4,7 @@
 
 **foundation-developer** is a collection of *mulle-sde extensions* to support development
 with the [MulleFoundation](//github.com/MulleFoundation). You need to install the
-compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) and the 
+compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) and the
 debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
 
 As a package for **homebrew** (OS X) and **apt** (Linux) it is also the most
@@ -82,16 +82,15 @@ mulle-sde craft
 
 # Install
 
-The initial install will only add *mulle-sde* to your system. The Foundation 
-itself will be fetched by *mulle-sde*, when you create a new project 
-(see **Usage** below).
+The initial install will only add *mulle-sde* to your system. The Foundation
+itself will be fetched by *mulle-sde*, when you create a new project
+(see **Usage** above).
 
 There is a variety of installation methods:
 
 * **Packages**
 * **Docker**
 * **Script**
-
 
 
 ## Packages
@@ -124,7 +123,7 @@ Package               | Comment
 apt-get install apt-transport-https gnupg lsb-release sudo wget
 ```
 
-You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) 
+You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project)
 and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
 
 From here on it's assumed, that sudo is installed. If you don't have *sudo*,
@@ -136,7 +135,8 @@ edit out the *sudo* from the command lines and run everything as `root`
 You can use this one-liner to do all the following steps in one:
 
 ```
-wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sudo sh
+wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer \
+| sudo sh
 ```
 
 
@@ -145,13 +145,15 @@ wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-develope
 Otherwise first add the necessary key to *apt*:
 
 ```
-wget -qO - "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | sudo apt-key add -
+wget -qO - "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" \
+| sudo apt-key add -
 ```
 
 #### Add the *apt* repository source list:
 
 ```
-echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
+echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" \
+| sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
 ```
 
 Now you are ready to install *foundation-developer*:
@@ -159,6 +161,16 @@ Now you are ready to install *foundation-developer*:
 ```
 sudo apt-get update
 sudo apt-get install foundation-developer
+```
+
+#### Download and install the mulle-clang compiler
+
+Check the [compiler releases](https://github.com/Codeon-GmbH/mulle-clang-project/releases)
+for the proper version to download:
+
+```
+curl -L -O "https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/11.0.0.0/mulle-clang-11.0.0.0-bullseye-amd64.deb"
+sudo dpkg --install "mulle-clang-11.0.0.0-bullseye-amd64.deb"
 ```
 
 
@@ -170,6 +182,7 @@ There is a [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/founda
 sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
 sudo docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t --rm foundation
 ```
+
 
 ### Script
 
@@ -189,8 +202,9 @@ Prerequisites         | Comment
 `bsdmainutils`        | Needed for `column`. A dependency that should go away...
 `less`                | Should be optional, but isn't right now
 
-You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) 
+You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project)
 and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
+
 
 #### Install into /usr/local with sudo
 

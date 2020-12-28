@@ -3,7 +3,7 @@ FROM debian:bullseye-slim
 # make it fresh
 # add en UTF-8 as a locale
 ENV OTHER_PROJECTS \
-mulle-sde;mulle-sde-developer; \
+mulle-sde/mulle-sde-developer; \
 mulle-c/mulle-c-developer; \
 mulle-objc/mulle-objc-developer; \
 MulleFoundation/mulle-foundation-developer; \
