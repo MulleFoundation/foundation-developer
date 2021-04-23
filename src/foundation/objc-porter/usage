@@ -1,1 +1,3 @@
-Port an Objective-C project to mulle-objc based on <Foundation/Foundation.h>
+Experimental: Port an Objective-C project to mulle-objc based on <Foundation/Foundation.h>.
+The main difference to objc-developer is, that it doesn't add cmake files
+and no demo files to the project. 

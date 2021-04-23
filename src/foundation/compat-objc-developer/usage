@@ -1,0 +1,2 @@
+A cmake project based on <Foundation/Foundation.h>. Uses Xcode/clang on macOS.
+Uses mulle-clang and MulleFoundation on other platforms.

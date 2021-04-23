@@ -1,0 +1,159 @@
+#! /usr/bin/env bash
+
+
+main()
+{
+   local OPTION_ADD_MULLE
+
+   #
+   # simple option handling
+   #
+   while [ $# -ne 0 ]
+   do
+      if options_technical_flags "$1"
+      then
+         shift
+         continue
+      fi
+
+      case "$1" in
+         --add-mulle)
+            OPTION_ADD_MULLE='YES'
+         ;;
+      esac
+      # just ignore
+      shift
+   done
+
+   options_setup_trace "${MULLE_TRACE}"
+
+      # Add Mulle Foundation
+
+   exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
+                     ${MULLE_TECHNICAL_FLAGS} \
+                     ${MULLE_SOURCETREE_FLAGS} \
+                  add \
+                     --if-missing \
+                     --nodetype '${FOUNDATION_NODETYPE:-tar}' \
+                     --marks no-singlephase,no-platform-darwin,no-require-os-darwin \
+                     --branch '${FOUNDATION_BRANCH}' \
+                     --tag '${FOUNDATION_TAG:-latest}' \
+                     --url '${FOUNDATION_URL:-https://github.com/MulleFoundation/Foundation/archive/${MULLE_TAG}.tar.gz}' \
+                     'Foundation' || exit 1
+
+   if [ "${PROJECT_TYPE}" = "executable" ]
+   then
+      exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
+                     ${MULLE_TECHNICAL_FLAGS} \
+                     ${MULLE_SOURCETREE_FLAGS} \
+                  add \
+                     --if-missing \
+                     --nodetype '${FOUNDATION_STARTUP_NODETYPE:-tar}' \
+                     --marks no-dynamic-link,no-intermediate-link,no-header,no-cmake-dependency,no-cmake-loader,no-cmake-searchpath,no-platform-darwin,no-require-os-darwin \
+                     --branch '${FOUNDATION_STARTUP_BRANCH}' \
+                     --tag '${FOUNDATION_STARTUP_TAG:-latest}' \
+                     --url '${FOUNDATION_STARTUP_URL:-https://github.com/MulleFoundation/Foundation-startup/archive/${MULLE_TAG}.tar.gz}' \
+                     'Foundation-startup' || exit 1
+   fi
+
+   #
+   # Modify Mulle Foundation
+   #
+   exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
+                  ${MULLE_TECHNICAL_FLAGS} \
+                  ${MULLE_SOURCETREE_FLAGS} \
+               unmark -e \
+                  Foundation platform-darwin || exit 1
+   exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
+                  ${MULLE_TECHNICAL_FLAGS} \
+                  ${MULLE_SOURCETREE_FLAGS} \
+               unmark -e \
+                  Foundation require-os-darwin || exit 1
+
+   if [ "${PROJECT_TYPE}" = "executable" ]
+   then
+      exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
+                     ${MULLE_TECHNICAL_FLAGS} \
+                     ${MULLE_SOURCETREE_FLAGS} \
+                  unmark -e \
+                     Foundation-startup platform-darwin || exit 1
+      exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
+                     ${MULLE_TECHNICAL_FLAGS} \
+                     ${MULLE_SOURCETREE_FLAGS} \
+                  unmark -e \
+                     Foundation-startup require-os-darwin || exit 1
+   fi
+
+   # Apple Foundation
+   exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
+                  ${MULLE_TECHNICAL_FLAGS} \
+                  ${MULLE_SOURCETREE_FLAGS} \
+               add \
+                  --if-missing \
+                  --nodetype 'none' \
+                  --marks 'no-all-load,only-framework,no-build,no-cmake-inherit,no-cmake-searchpath,no-delete,no-dependency,no-fs,no-share,no-update,only-cmake-platform-darwin,only-platform-darwin' \
+                  --userinfo 'include=Foundation/Foundation.h
+aliases=Foundation' \
+                  'AppleFoundation' || exit 1
+
+   exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
+                  ${MULLE_TECHNICAL_FLAGS} \
+                  ${MULLE_SOURCETREE_FLAGS} \
+               add \
+                  --if-missing \
+                  --nodetype '${OBJC_COMPAT_NODETYPE:-tar}' \
+                  --marks 'no-all-load,no-import,no-link' \
+                  --url '${OBJC_COMPAT_URL:-https://github.com/MulleFoundation/objc-compat/archive/${MULLE_TAG}.tar.gz}' \
+                  --branch '${OBJC_COMPAT_BRANCH}' \
+                  --tag '${OBJC_COMPAT_TAG:-latest}' \
+                  objc-compat
+
+   exekutor "${MULLE_ENV:-mulle-env}" environment \
+                  --scope global \
+               set \
+                  MULLE_SOURCETREE_USE_PLATFORM_MARKS_FOR_FETCH "YES" || exit 1
+}
+
+
+########
+###
+### INIT
+###
+_init()
+{
+   #
+   # leading backslash ? looks like we're getting called from
+   # mingw via a .BAT or so
+   #
+   case "$PATH" in
+      '\\'*)
+         PATH="${PATH//\\/\/}"
+      ;;
+   esac
+
+   if [ -z "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}" ]
+   then
+      MULLE_BASHFUNCTIONS_LIBEXEC_DIR="`mulle-bashfunctions-env libexec-dir 2> /dev/null`"
+      if [ -z "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}" ]
+      then
+         if [ -z "`command -v 'mulle-bashfunctions-env'`" ]
+         then
+            echo "Fatal Error: Could not find mulle-bashfunctions-env in PATH ($PATH) - mulle-bashfunctions not installed ?" >&2
+         else
+            echo "Fatal Error: Could not find libexec-dir of mulle-bashfunctions-env ($PWD)" >&2
+         fi
+         exit 1
+      fi
+   fi
+
+      # shellcheck source=../mulle-bashfunctions/src/mulle-bashfunctions.sh
+   . "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}/mulle-bashfunctions.sh" minimal ||
+      fail "failed to load bashfunctions from ${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}"
+
+   trap trap_fail INT
+   set -o pipefail
+
+   call_main "$@"
+}
+
+_init "$@"

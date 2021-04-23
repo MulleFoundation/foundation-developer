@@ -1,0 +1,4 @@
+#
+# Disable fetch of MulleFoundation on macOS
+#
+MULLE_SOURCETREE_USE_PLATFORM_MARKS_FOR_FETCH="YES"

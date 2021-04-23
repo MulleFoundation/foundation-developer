@@ -1,5 +1,5 @@
 # always runtime before buildtool to pick up language
-foundation/objc;runtime
+foundation/compat-objc;runtime
 foundation/objc-cmake;buildtool
 
 #

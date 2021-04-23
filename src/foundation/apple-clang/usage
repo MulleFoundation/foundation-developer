@@ -1,0 +1,2 @@
+Change project to use the Apple compiler instead of mulle-clang on macOS.
+Continues to use mulle-clang on other platforms.

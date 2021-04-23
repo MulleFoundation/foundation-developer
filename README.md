@@ -2,13 +2,16 @@
 
 #### 👒 Objective C with mulle-sde and the MulleFoundation
 
-**foundation-developer** is a collection of *mulle-sde extensions* to support development
-with the [MulleFoundation](//github.com/MulleFoundation). You need to install the
-compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) and the
-debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
+**foundation-developer** is a collection of *mulle-sde extensions* to support 
+development with the [MulleFoundation](//github.com/MulleFoundation) and
+the [Apple Foundation](https://developer.apple.com/documentation/foundation?language=objc).
 
 As a package for **homebrew** (OS X) and **apt** (Linux) it is also the most
 convenient way to install [mulle-sde](//github.com/mulle-sde/mulle-sde).
+
+*foundation-developer* provides `<Foundation/Foundation.h>` to your mulle-sde
+projects. It is a thin package atop of
+[mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
 
 
 Project      | Build Status
@@ -16,9 +19,8 @@ Project      | Build Status
 ![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](https://travis-ci.org/MulleFoundation/foundation-developer.svg?branch=release)](https://travis-ci.org/MulleFoundation/foundation-developer)
 
 
-*foundation-developer* enables the use of `<Foundation/Foundation.h>` in your
-projects. It is very thin package atop of
-[mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer).
+You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) 
+and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
 
 See [De Re MulleObjc](//github.com/mulle-objc/De-Re-MulleObjC) for an introduction
 to *mulle-objc*.
@@ -57,24 +59,33 @@ with `Makefiles` or some such.
 mulle-sde extension show
 ```
 
-### Create an Objective-C executable project
+### Create a Objective-C executable project 
+
+This kind of project works with the Apple Foundation on macOS and with the
+MulleFoundation everywhere else:
 
 ```
 mkdir foo
 cd foo
-mulle-sde init -m foundation/objc-developer executable
+mulle-sde init -m foundation/objc-xcode-developer executable
 ```
 
 Just follow the instructions *mulle-sde* prints.
 
-> There will be an error because of a missing MulleObjCDecimalLibrary. This
-> is normal.
+> #### Tips
+>
+> If you want to use the MulleFoundation on macOS as well, choose 
+> the meta extension `foundation/objc-developer` instead.
+>
+> There may appear an error because of a missing MulleObjCDecimalLibrary. This
+> is normal and harmless.
+>
 
 
 ### Create an Objective-C library project
 
 ```
-mulle-sde init -d foolib -m foundation/objc-developer library
+mulle-sde init -d foolib -m foundation/objc-xcode-developer library
 cd foolib
 mulle-sde craft
 ```
@@ -82,8 +93,9 @@ mulle-sde craft
 
 # Install
 
-The initial install will only add *mulle-sde* to your system. The Foundation
-itself will be fetched by *mulle-sde*, when you create a new project
+The initial install will only add *mulle-sde* to your system. The 
+MulleFoundation itself will be fetched by *mulle-sde*, if needed, when you 
+craft your project for the first time.
 (see **Usage** above).
 
 There is a variety of installation methods:

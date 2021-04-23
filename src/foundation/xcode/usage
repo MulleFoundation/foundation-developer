@@ -1,0 +1,2 @@
+Change project to use Apple <Foundation/Foundation.h> on macOS instead of MulleFoundation.
+Continues to use mulle-clang and MulleFoundation on other platforms.
