@@ -91,7 +91,7 @@ main()
                add \
                   --if-missing \
                   --nodetype 'none' \
-                  --marks 'no-all-load,only-framework,no-build,no-cmake-inherit,no-cmake-searchpath,no-delete,no-dependency,no-fs,no-share,no-update,only-cmake-platform-darwin,only-platform-darwin' \
+                  --marks 'no-all-load,only-framework,no-build,no-cmake-inherit,no-delete,no-dependency,no-fs,no-share,no-update,only-cmake-platform-darwin,only-platform-darwin' \
                   --userinfo 'include=Foundation/Foundation.h
 aliases=Foundation' \
                   'AppleFoundation' || exit 1
