@@ -4,9 +4,7 @@ on: [push]
 
 env:
   BUILD_TYPE: release
-  OTHER_PROJECTS: "\
-MulleFoundation/foundation-developer;
-MulleFoundation/mulle-foundation-developer;
+  OTHER_PROJECTS: "MulleFoundation/mulle-foundation-developer;
 mulle-objc/mulle-objc-developer;
 mulle-c/mulle-c-developer;"
 
@@ -15,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest]
+        os: [ ubuntu-latest] # macos-latest,
 
     steps:
     - name: Update stuff (for act)
@@ -45,27 +43,17 @@ jobs:
 
     - uses: mulle-objc/github-ci@v2
 
-    - name: List extensions
-      run: |
-        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" extension show
+    - name: Dump Project Environment
+      run:  |
+        ls -l .mulle/etc/env/
+        mulle-sde environment
 
-    - name: Foundation Library
-      run: |
-        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" init -d lib -m foundation/objc-developer library &&
-        cd lib &&
-        mulle-sde hostname &&
-        mulle-sde environment &&
-        echo "Adding environment-host-ci-prerelease file from Foundation/test" >&2 &&
-        curl -L --output .mulle/etc/env/environment-host-ci-prerelease.sh "https://raw.githubusercontent.com/MulleFoundation/Foundation/prerelease/test/.mulle/etc/env/environment-host-ci-prerelease.sh" >&2 &&
-        mulle-sde craft
+    - name: Mulle-SDE Fetch
+      run: mulle-sde fetch
 
-    - name: Foundation Executable
-      run: |
-        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" extension show &&
-        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" init -d exe -m foundation/objc-developer executable &&
-        cd exe &&
-        echo "Adding environment-host-ci-prerelease file from Foundation/test" >&2 &&
-        curl -L --output .mulle/etc/env/environment-host-ci-prerelease.sh "https://raw.githubusercontent.com/MulleFoundation/Foundation/prerelease/test/.mulle/etc/env/environment-host-ci-prerelease.sh" >&2 &&
-        mulle-sde craft --release &&
-        "./kitchen/Release/exe"
+    - name: Mulle-SDE Craft
+      run: mulle-sde craft --${BUILD_TYPE:-release}
 
+    - name: Mulle-SDE Test
+      run: |
+        [ ! -d test ] || mulle-sde test
