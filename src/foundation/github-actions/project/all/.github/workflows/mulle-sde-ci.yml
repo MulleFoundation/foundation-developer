@@ -4,7 +4,7 @@ on: [push]
 
 env:
   BUILD_TYPE: release
-  OTHER_PROJECTS: "Foundation/foundation-developer;
+  OTHER_PROJECTS: "MulleFoundation/foundation-developer;
 MulleFoundation/mulle-foundation-developer;
 mulle-objc/mulle-objc-developer;
 mulle-c/mulle-c-developer;"
@@ -17,14 +17,6 @@ jobs:
         os: [ ubuntu-latest] # macos-latest,
 
     steps:
-    - name: Update stuff (for act)
-      if: ${{ env.ACT }}
-      run: apt-get update
-
-    - name: Install stuff (for act)
-      if: ${{ env.ACT }}
-      run: apt-get -y install cmake curl lsb-release uuid-runtime
-
     - name: Set MULLE_HOSTNAME
       run: |
         name="${GITHUB_REF##*/}"
@@ -41,12 +33,14 @@ jobs:
       if: ${{ ! env.ACT }}
 
     - uses: mulle-sde/github-ci@v1
+      if: ${{ ! env.ACT }}
 
     - uses: mulle-objc/github-ci@v2
+      if: ${{ ! env.ACT }}
 
     - name: Dump Project Environment
       run:  |
-        ls -l .mulle/etc/env/
+        [ ! -d .mulle/etc/env ] || ls -l .mulle/etc/env/environment*.sh
         mulle-sde environment
 
     - name: Mulle-SDE Fetch
