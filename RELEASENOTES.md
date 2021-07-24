@@ -1,6 +1,6 @@
 ## 0.19.0
 
-* Various small improvements
+* add compat-objc-developer
 
 
 ## 0.18.0
