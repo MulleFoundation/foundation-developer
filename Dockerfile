@@ -24,12 +24,12 @@ ENV SDE_PROJECTS    mulle-test
 
 RUN DEBIAN_FRONTEND=noninteractive \
       apt-get update \
-   && apt-get -y install cmake ninja-build build-essential uuid-runtime bsdmainutils wget \
+   && apt-get -y install cmake curl git ninja-build build-essential uuid-runtime bsdmainutils wget \
 \
    && wget "https://raw.githubusercontent.com/mulle-sde/mulle-sde/prerelease/bin/installer-all" \
    && chmod 755 installer-all \
    && ./installer-all /usr no \
 \
-   && wget "https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/11.0.0.0/mulle-clang-11.0.0.0-bullseye-amd64.deb"  \
-   && dpkg --install "mulle-clang-11.0.0.0-bullseye-amd64.deb"
+   && wget "https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/12.0.0.0/mulle-clang-12.0.0.0-bullseye-amd64.deb"  \
+   && dpkg --install "mulle-clang-12.0.0.0-bullseye-amd64.deb"
 

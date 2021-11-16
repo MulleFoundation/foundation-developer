@@ -1,1 +1,5 @@
 --nodetype '${FOUNDATION_NODETYPE:-tar}' --marks no-singlephase --branch '${FOUNDATION_BRANCH}' --tag '${FOUNDATION_TAG:-latest}' --url '${FOUNDATION_URL:-https://github.com/MulleFoundation/Foundation/archive/${MULLE_TAG}.tar.gz}' 'Foundation'
+# mulle-objc-list is used to produce objc-loader.inc. But an executable that
+# does a static link, may not be able to run this (musl-mulle-clang)
+--nodetype '${MULLE_OBJC_LIST_NODETYPE:-tar}' --marks 'no-all-load,no-bequeath,no-cmake-inherit,no-header,no-link' --url '${MULLE_OBJC_LIST_URL:-https://github.com/mulle-objc/mulle-objc-list/archive/${MULLE_TAG}.tar.gz}' --branch '${MULLE_OBJC_LIST_BRANCH}' --tag '${MULLE_OBJC_LIST_TAG:-latest}' 'mulle-objc-list'
+
