@@ -1,5 +1,51 @@
-#! /usr/bin/env bash
+#! /bin/sh
 
+
+##########################################################################
+###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###
+###########################################################################
+# #
+# # PRELUDE - Standard startup code for loading mulle-bashfunctions
+# #
+###
+
+#
+# Figure out MULLE_BASHFUNCTIONS_LIBEXEC_DIR on this machine if needed.
+#
+if [ -z "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}" ]
+then
+   MULLE_BASHFUNCTIONS_LIBEXEC_DIR="`mulle-bashfunctions libexec-dir`" || exit 1
+   export MULLE_BASHFUNCTIONS_LIBEXEC_DIR
+fi
+
+#
+# The booter reruns the executable either with bash or zsh, whatever the
+# system provides. On the second run --no-auto-shell will be set first.
+#
+if [ "$1" != --no-auto-shell ]
+then
+   . "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}/mulle-boot.sh" || exit 1
+else
+   shift    # get rid of --no-auto-shell
+fi
+
+
+#
+# Include mulle-bashfunctions.sh         : default functions
+#         mulle-bashfunctions-none.sh    : almost no functions
+#         mulle-bashfunctions-minimal.sh : few functions for basic scripts
+#         mulle-bashfunctions-all.sh     : everything, even obscure functions
+#
+# Do this first to get aliases
+#
+. "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}/mulle-bashfunctions.sh" || exit 1
+
+###
+# # Now we are in bash or zsh with mulle-bashfunctions loaded
+# #
+###########################################################################
+###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###
+###########################################################################
 
 main()
 {
@@ -115,47 +161,4 @@ aliases=Foundation' \
 }
 
 
-########
-###
-### INIT
-###
-_init()
-{
-   #
-   # leading backslash ? looks like we're getting called from
-   # mingw via a .BAT or so
-   #
-   case "$PATH" in
-      '\\'*)
-         PATH="${PATH//\\/\/}"
-      ;;
-   esac
-
-   if [ -z "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}" ]
-   then
-      MULLE_BASHFUNCTIONS_LIBEXEC_DIR="`mulle-bashfunctions-env libexec-dir 2> /dev/null`"
-      if [ -z "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}" ]
-      then
-         if [ -z "`command -v 'mulle-bashfunctions-env'`" ]
-         then
-            echo "Fatal Error: Could not find mulle-bashfunctions-env in PATH ($PATH) - mulle-bashfunctions not installed ?" >&2
-         else
-            echo "Fatal Error: Could not find libexec-dir of mulle-bashfunctions-env ($PWD)" >&2
-         fi
-         exit 1
-      fi
-   fi
-
-      # shellcheck source=../mulle-bashfunctions/src/mulle-bashfunctions.sh
-   . "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}/mulle-bashfunctions.sh" minimal ||
-      fail "failed to load bashfunctions from ${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}"
-
-   shell_enable_pipefail
-   shell_enable_extglob
-
-   call_main "$@"
-}
-
-MULLE_EXECUTABLE="${MULLE_EXECUTABLE:-${BASH_SOURCE[0]:-${(%):-%x}}}"
-
-_init "$@"
+main "$@"
