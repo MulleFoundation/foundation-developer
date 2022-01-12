@@ -177,12 +177,12 @@ sudo apt-get install foundation-developer
 
 #### Download and install the mulle-clang compiler
 
-Check the [compiler releases](https://github.com/Codeon-GmbH/mulle-clang-project/releases)
+Check the [compiler releases](https://github.com/mulle-cc/mulle-clang-project/releases)
 for the proper version to download:
 
 ```
-curl -L -O "https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/11.0.0.0/mulle-clang-11.0.0.0-bullseye-amd64.deb"
-sudo dpkg --install "mulle-clang-11.0.0.0-bullseye-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/13.0.0.1/mulle-clang-13.0.0.1-bullseye-amd64.deb"
+sudo dpkg --install "mulle-clang-13.0.0.1-bullseye-amd64.deb"
 ```
 
 
@@ -246,7 +246,7 @@ mulle-test;latest" \
 ./installer-all ~ no
 ```
 
-You will need to install [mulle-clang](//github.com/Codeon-GmbH/mulle-clang)
+You will need to install [mulle-clang](//github.com/mulle-cc/mulle-clang-project)
 yourself though.
 
 
