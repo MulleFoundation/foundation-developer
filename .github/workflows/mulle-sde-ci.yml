@@ -36,7 +36,7 @@ jobs:
     - uses: mulle-sde/github-ci@v1
       if: ${{ ! env.ACT }}
 
-    - uses: mulle-objc/github-ci@v2
+    - uses: mulle-objc/github-ci@v3
       if: ${{ ! env.ACT }}
       
     - name: List extensions
@@ -52,6 +52,7 @@ jobs:
         echo "Adding environment-host-ci-prerelease file from Foundation/test" >&2 &&
         curl -L --output .mulle/etc/env/environment-host-ci-prerelease.sh "https://raw.githubusercontent.com/MulleFoundation/Foundation/prerelease/test/.mulle/etc/env/environment-host-ci-prerelease.sh" >&2 &&
         mulle-sde craft
+        
     - name: Foundation Executable
       run: |
         mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" extension show &&
