@@ -192,7 +192,7 @@ There is a [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/founda
 
 ```
 sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
-sudo docker run --objcap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t --rm foundation
+sudo docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t --rm foundation
 ```
 
 
