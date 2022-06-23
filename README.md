@@ -16,11 +16,8 @@ projects. It is a thin package atop of
 
 Project      | Build Status
 -------------|-----------------------------------
-![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](https://travis-ci.org/MulleFoundation/foundation-developer.svg?branch=release)](https://travis-ci.org/MulleFoundation/foundation-developer)
+![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](https://github.com/MulleFoundation/foundation-developer/workflows/CI/badge.svg?branch=release)](https://github.com/MulleFoundation/foundation/actions-developer)
 
-
-You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project) 
-and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
 
 See [De Re MulleObjc](//github.com/mulle-objc/De-Re-MulleObjC) for an introduction
 to *mulle-objc*.
@@ -44,65 +41,43 @@ foundation/objc-developer | meta | Create Objective-C projects
 - - [Docker](#Docker)
 - [Relations](#Relations)
 
-
-## Usage
-
-The following examples show how to use the *MulleFoundation* with the
-*mulle-sde* environment. You can also use the
-[legacy workflow](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_legacy.html)
-with `Makefiles` or some such.
-
-
-### Check that the (meta) extensions are found:
-
-```
-mulle-sde extension show
-```
-
-### Create a Objective-C executable project 
-
-This kind of project works with the Apple Foundation on macOS and with the
-MulleFoundation everywhere else:
-
-```
-mkdir foo
-cd foo
-mulle-sde init -m foundation/objc-xcode-developer executable
-```
-
-Just follow the instructions *mulle-sde* prints.
-
-> #### Tips
->
-> If you want to use the MulleFoundation on macOS as well, choose 
-> the meta extension `foundation/objc-developer` instead.
->
-> There may appear an error because of a missing MulleObjCDecimalLibrary. This
-> is normal and harmless.
->
-
-
-### Create an Objective-C library project
-
-```
-mulle-sde init -d foolib -m foundation/objc-xcode-developer library
-cd foolib
-mulle-sde craft
-```
-
-
 # Install
 
-The initial install will only add *mulle-sde* to your system. The 
-MulleFoundation itself will be fetched by *mulle-sde*, if needed, when you 
+The initial install will only add *mulle-sde* to your system. The
+MulleFoundation itself will be fetched by *mulle-sde*, if needed, when you
 craft your project for the first time.
 (see **Usage** above).
 
 There is a variety of installation methods:
 
-* **Packages**
 * **Docker**
+* **Packages**
 * **Script**
+
+## Docker
+
+Docker images are published to [dockerhub](https://hub.docker.com/r/mulleobjc/foundation).
+
+Pull an image with:
+
+```sh
+sudo docker pull mulleobjc/foundation
+```
+
+Run it with:
+
+``` sh
+sudo docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t mulleobjc/foundation:latest
+```
+
+
+You can also build the docker image with the [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile):
+
+``` sh
+sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
+sudo docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t foundation
+```
+
 
 
 ## Packages
@@ -114,13 +89,31 @@ debian  | apt             | `sudo apt-get -y install foundation-developer` (but 
 ubuntu  | apt             | `sudo apt-get -y install foundation-developer` (but see below)
 
 
-### apt
+
+### homebrew - One line install
+
+
+``` sh
+brew install mulle-kybernetik/software/foundation-developer
+```
+
+
+### apt - Remote script install
+
+You can use this one-liner to do install everything:
+
+``` sh
+wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer \
+| sudo sh
+```
+
+
+### apt - Manual install
+
+#### Install Prerequisites
 
 As prerequisites there are some very basic packages that need to be installed
-first. They are usually present on anything but a barebones system.
-
-
-#### Prerequisites
+first. They are usually present on any but a barebones system.
 
 Package               | Comment
 ----------------------|--------------------------
@@ -135,42 +128,29 @@ Package               | Comment
 apt-get install apt-transport-https gnupg lsb-release sudo wget
 ```
 
-You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project)
-and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
-
 From here on it's assumed, that sudo is installed. If you don't have *sudo*,
 edit out the *sudo* from the command lines and run everything as `root`
 
 
-#### One line install
-
-You can use this one-liner to do all the following steps in one:
-
-```
-wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer \
-| sudo sh
-```
-
-
 #### Install the GPG keys:
 
-Otherwise first add the necessary key to *apt*:
+Or you can do the instfirst add the necessary key to *apt*:
 
-```
+``` sh
 wget -qO - "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" \
 | sudo apt-key add -
 ```
 
 #### Add the *apt* repository source list:
 
-```
+``` sh
 echo "deb [arch=all] http://www.mulle-kybernetik.com `lsb_release -c -s` main" \
 | sudo tee "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" > /dev/null
 ```
 
 Now you are ready to install *foundation-developer*:
 
-```
+``` sh
 sudo apt-get update
 sudo apt-get install foundation-developer
 ```
@@ -180,27 +160,28 @@ sudo apt-get install foundation-developer
 Check the [compiler releases](https://github.com/mulle-cc/mulle-clang-project/releases)
 for the proper version to download:
 
-```
+``` sh
 curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/13.0.0.1/mulle-clang-13.0.0.1-bullseye-amd64.deb"
 sudo dpkg --install "mulle-clang-13.0.0.1-bullseye-amd64.deb"
 ```
 
+#### Download and install the mulle-gdb debugger
 
-### Docker
+Check the [debugger releases](https://github.com/mulle-cc/mulle-gdb/releases)
+for the proper version to download:
 
-There is a [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile) in the project. To build and run an ephemeral development container named `foundation` based on ubuntu, do:
-
+``` sh
+curl -L -O "https://github.com/mulle-cc/mulle-gdb/releases/download/11.1.0.0/mulle-gdb_11.1.0-1_bullseye_amd64.deb"
+sudo dpkg --install "mulle-gdb_11.1.0-1_bullseye_amd64.deb"
 ```
-sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
-sudo docker run --objcap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t --rm foundation
-```
+
 
 
 ### Script
 
 *mulle-sde* provides an
-[installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all)
-script to install *foundation-developer* into `/usr` (or some other place).
+[installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all).
+
 This is suitable for environments without supported package managers like for
 instance *Fedora* or *FreeBSD*.
 
@@ -214,8 +195,6 @@ Prerequisites         | Comment
 `bsdmainutils`        | Needed for `column`. A dependency that should go away...
 `less`                | Should be optional, but isn't right now
 
-You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project)
-and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
 
 
 #### Install into /usr/local with sudo
@@ -246,8 +225,44 @@ mulle-test;latest" \
 ./installer-all ~ no
 ```
 
-You will need to install [mulle-clang](//github.com/mulle-cc/mulle-clang-project)
-yourself though.
+You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project)
+and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
+
+
+# Usage
+
+The following examples show how to use the *MulleFoundation* with the
+*mulle-sde* environment. If you prefer `Makefiles` or some such, read about
+the [legacy workflow](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_legacy.html).
+
+
+## Check that the (meta) extensions are found:
+
+``` sh
+mulle-sde extension show
+```
+
+## Create an Objective-C executable project
+
+This kind of project works with the Apple Foundation on macOS and with the
+MulleFoundation everywhere else:
+
+``` sh
+mkdir foo
+cd foo
+mulle-sde init -m foundation/objc-xcode-developer executable
+```
+
+Then just follow the instructions *mulle-sde* prints.
+
+> #### Tips
+>
+> If you want to use the MulleFoundation on macOS as well, choose
+> the meta extension `foundation/objc-developer` instead.
+>
+> There may appear an error because of a missing MulleObjCDecimalLibrary. This
+> is normal and harmless.
+>
 
 
 ## Relations

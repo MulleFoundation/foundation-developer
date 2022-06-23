@@ -1,8 +1,8 @@
-cmake_minimum_required( VERSION 3.0)
+cmake_minimum_required( VERSION 3.15)
 
 project( foundation-developer NONE)
 
-set( PROJECT_VERSION 0.20.0)
+set( PROJECT_VERSION 0.20.1)
 
 
 set( EXTENSIONS

@@ -1,5 +1,6 @@
 mulle-clang
-mulle-lldb;optional
+mulle-scan-build;optional
+mulle-gdb;optional
 cmake;optional
 ninja;optional
 make;optional

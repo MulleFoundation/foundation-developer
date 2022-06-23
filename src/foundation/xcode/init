@@ -12,7 +12,7 @@
 #
 # Figure out MULLE_BASHFUNCTIONS_LIBEXEC_DIR on this machine if needed.
 #
-if [ -z "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}" ]
+if ! [ ${MULLE_BASHFUNCTIONS_LIBEXEC_DIR+x} ]
 then
    MULLE_BASHFUNCTIONS_LIBEXEC_DIR="`mulle-bashfunctions libexec-dir`" || exit 1
    export MULLE_BASHFUNCTIONS_LIBEXEC_DIR
@@ -22,7 +22,7 @@ fi
 # The booter reruns the executable either with bash or zsh, whatever the
 # system provides. On the second run --no-auto-shell will be set first.
 #
-if [ "$1" != --no-auto-shell ]
+if [ "${1:-}" != --no-auto-shell ]
 then
    . "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}/mulle-boot.sh" || exit 1
 else
@@ -77,7 +77,7 @@ main()
 
    exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
                      ${MULLE_TECHNICAL_FLAGS} \
-                     ${MULLE_SOURCETREE_FLAGS} \
+                     ${MULLE_SOURCETREE_FLAGS:-} \
                   add \
                      --if-missing \
                      --nodetype '${FOUNDATION_NODETYPE:-tar}' \
@@ -91,7 +91,7 @@ main()
    then
       exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
                      ${MULLE_TECHNICAL_FLAGS} \
-                     ${MULLE_SOURCETREE_FLAGS} \
+                     ${MULLE_SOURCETREE_FLAGS:-} \
                   add \
                      --if-missing \
                      --nodetype '${FOUNDATION_STARTUP_NODETYPE:-tar}' \
@@ -107,12 +107,12 @@ main()
    #
    exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
                   ${MULLE_TECHNICAL_FLAGS} \
-                  ${MULLE_SOURCETREE_FLAGS} \
+                  ${MULLE_SOURCETREE_FLAGS:-} \
                unmark -e \
                   Foundation platform-darwin || exit 1
    exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
                   ${MULLE_TECHNICAL_FLAGS} \
-                  ${MULLE_SOURCETREE_FLAGS} \
+                  ${MULLE_SOURCETREE_FLAGS:-} \
                unmark -e \
                   Foundation require-os-darwin || exit 1
 
@@ -120,12 +120,12 @@ main()
    then
       exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
                      ${MULLE_TECHNICAL_FLAGS} \
-                     ${MULLE_SOURCETREE_FLAGS} \
+                     ${MULLE_SOURCETREE_FLAGS:-} \
                   unmark -e \
                      Foundation-startup platform-darwin || exit 1
       exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
                      ${MULLE_TECHNICAL_FLAGS} \
-                     ${MULLE_SOURCETREE_FLAGS} \
+                     ${MULLE_SOURCETREE_FLAGS:-} \
                   unmark -e \
                      Foundation-startup require-os-darwin || exit 1
    fi
@@ -133,7 +133,7 @@ main()
    # Apple Foundation
    exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
                   ${MULLE_TECHNICAL_FLAGS} \
-                  ${MULLE_SOURCETREE_FLAGS} \
+                  ${MULLE_SOURCETREE_FLAGS:-} \
                add \
                   --if-missing \
                   --nodetype 'none' \
@@ -144,7 +144,7 @@ aliases=Foundation' \
 
    exekutor "${MULLE_SOURCETREE:-mulle-sourcetree}" \
                   ${MULLE_TECHNICAL_FLAGS} \
-                  ${MULLE_SOURCETREE_FLAGS} \
+                  ${MULLE_SOURCETREE_FLAGS:-} \
                add \
                   --if-missing \
                   --nodetype '${OBJC_COMPAT_NODETYPE:-tar}' \

@@ -24,3 +24,6 @@ tmp.*/
 
 mulle-objc-developer.sublime-workspace
 Dockerfile.trusty
+.mulle-make-build-dir
+version.old
+.gdb_history
