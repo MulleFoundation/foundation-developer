@@ -161,8 +161,8 @@ Check the [compiler releases](https://github.com/mulle-cc/mulle-clang-project/re
 for the proper version to download:
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/13.0.0.1/mulle-clang-13.0.0.1-bullseye-amd64.deb"
-sudo dpkg --install "mulle-clang-13.0.0.1-bullseye-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.0/mulle-clang-14.0.6.0-bullseye-amd64.deb"
+sudo dpkg --install "mulle-clang-14.0.6.0-bullseye-amd64.deb"
 ```
 
 #### Download and install the mulle-gdb debugger
@@ -175,6 +175,14 @@ curl -L -O "https://github.com/mulle-cc/mulle-gdb/releases/download/11.1.0.0/mul
 sudo dpkg --install "mulle-gdb_11.1.0-1_bullseye_amd64.deb"
 ```
 
+### Docker
+
+There is a [Dockerfile](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile) in the project. To build and run an ephemeral development container named `foundation` based on ubuntu, do:
+
+``` sh
+sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
+sudo docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t --rm foundation
+```
 
 
 ### Script
