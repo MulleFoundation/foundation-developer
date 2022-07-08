@@ -16,7 +16,7 @@ projects. It is a thin package atop of
 
 Project      | Build Status
 -------------|-----------------------------------
-![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](https://github.com/MulleFoundation/foundation-developer/workflows/CI/badge.svg?branch=release)](https://github.com/MulleFoundation/foundation/actions-developer)
+![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](//github.com/MulleFoundation/foundation-developer/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/foundation-developer/actions)
 
 
 See [De Re MulleObjc](//github.com/mulle-objc/De-Re-MulleObjC) for an introduction
@@ -157,7 +157,7 @@ sudo apt-get install foundation-developer
 
 #### Download and install the mulle-clang compiler
 
-Check the [compiler releases](https://github.com/mulle-cc/mulle-clang-project/releases)
+Check the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases)
 for the proper version to download:
 
 ``` sh
@@ -167,7 +167,7 @@ sudo dpkg --install "mulle-clang-14.0.6.0-bullseye-amd64.deb"
 
 #### Download and install the mulle-gdb debugger
 
-Check the [debugger releases](https://github.com/mulle-cc/mulle-gdb/releases)
+Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
 for the proper version to download:
 
 ``` sh
@@ -233,8 +233,8 @@ mulle-test;latest" \
 ./installer-all ~ no
 ```
 
-You need to install the compiler [mulle-clang](//github.com/Codeon-GmbH/mulle-clang-project)
-and the debugger [mulle-gdb](//github.com/Codeon-GmbH/mulle-gdb) separately.
+You need to install the compiler [mulle-clang](//github.com/mulle-cc/mulle-clang-project)
+and the debugger [mulle-gdb](//github.com/mulle-cc/mulle-gdb) separately.
 
 
 # Usage
