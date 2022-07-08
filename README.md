@@ -16,7 +16,7 @@ projects. It is a thin package atop of
 
 Project      | Build Status
 -------------|-----------------------------------
-![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](//github.com/MulleFoundation/foundation-developer/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/foundation-developer/actions)
+![Logo](https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/logo.png)| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg) [![Build Status](https://github.com/MulleFoundation/foundation-developer/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/foundation-developer/actions)
 
 
 See [De Re MulleObjc](//github.com/mulle-objc/De-Re-MulleObjC) for an introduction
