@@ -1,6 +1,6 @@
 #! /bin/sh -x
 
-MULLE_CLANG_VERSION="${MULLE_CLANG_VERSION:-11.0.0.0}"
+MULLE_CLANG_VERSION="${MULLE_CLANG_VERSION:-14.0.6.2}"
 
 if [ ! -w /etc/apt/sources.list.d ]
 then
@@ -104,7 +104,7 @@ esac
 # https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/11.0.0.0-RC2/mulle-clang-11.0.0.0-buster-amd64.deb
 filename="mulle-clang-${MULLE_CLANG_VERSION}-${codename}-amd64.deb"
 
-url="https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/${MULLE_CLANG_VERSION}"
+url="https://github.com/mulle-cc/mulle-clang-project/releases/download/${MULLE_CLANG_VERSION}"
 url="${url}/${filename}"
 
 echo "Downloading ${url} ..." >&2

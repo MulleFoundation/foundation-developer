@@ -161,8 +161,8 @@ Check the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases
 for the proper version to download:
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.0/mulle-clang-14.0.6.0-bullseye-amd64.deb"
-sudo dpkg --install "mulle-clang-14.0.6.0-bullseye-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb"
+sudo dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb"
 ```
 
 #### Download and install the mulle-gdb debugger
