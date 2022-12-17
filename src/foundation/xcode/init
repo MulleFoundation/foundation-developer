@@ -94,11 +94,11 @@ main()
                      ${MULLE_SOURCETREE_FLAGS:-} \
                   add \
                      --if-missing \
-                     --nodetype '${FOUNDATION_STARTUP_NODETYPE:-tar}' \
+                     --nodetype '${FOUNDATION__STARTUP_NODETYPE:-tar}' \
                      --marks no-dynamic-link,no-intermediate-link,no-header,no-cmake-dependency,no-cmake-loader,no-cmake-searchpath,no-platform-darwin,no-require-os-darwin \
-                     --branch '${FOUNDATION_STARTUP_BRANCH}' \
-                     --tag '${FOUNDATION_STARTUP_TAG:-latest}' \
-                     --url '${FOUNDATION_STARTUP_URL:-https://github.com/MulleFoundation/Foundation-startup/archive/${MULLE_TAG}.tar.gz}' \
+                     --branch '${FOUNDATION__STARTUP_BRANCH}' \
+                     --tag '${FOUNDATION__STARTUP_TAG:-latest}' \
+                     --url '${FOUNDATION__STARTUP_URL:-https://github.com/MulleFoundation/Foundation-startup/archive/${MULLE_TAG}.tar.gz}' \
                      'Foundation-startup' || exit 1
    fi
 
