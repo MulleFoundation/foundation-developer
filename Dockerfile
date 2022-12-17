@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM ubuntu:latest
 
 # make it fresh
 # add en UTF-8 as a locale

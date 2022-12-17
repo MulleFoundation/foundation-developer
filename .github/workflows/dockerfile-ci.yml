@@ -10,7 +10,6 @@ jobs:
   
    steps:
      - uses: actions/checkout@v2
-       run:  echo "$HOME/bin" >> $GITHUB_PATH
 
      - name: Build Docker image
        run: docker build .
