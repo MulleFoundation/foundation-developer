@@ -1,0 +1,41 @@
+name: HomebrewCI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ macos-latest ]
+
+    steps:
+    - name: Set MULLE_HOSTNAME
+      run: |
+        name="${GITHUB_REF##*/}"
+        MULLE_HOSTNAME="${MULLE_HOSTNAME:-ci-${name##*-}}"
+        echo "MULLE_HOSTNAME=${MULLE_HOSTNAME}" >> $GITHUB_ENV
+
+    - name: Add to path
+      run:  echo "$HOME/bin" >> $GITHUB_PATH
+
+    - name: Dump Environment
+      run:  env | sort
+
+    - uses: actions/checkout@v2
+
+    - name: Install
+      run: |
+        brew install mulle-kybernetik/software/foundation-developer
+        
+    - name: Foundation Executable
+      run: |
+        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" extension show &&
+        mulle-sde -DMULLE_SDE_EXTENSION_BASE_PATH="${PWD}/src" init -d exe -m foundation/objc-developer executable &&
+        cd exe &&
+        echo "Adding environment-host-ci-prerelease file from Foundation/test" >&2 &&
+        curl -L --output .mulle/etc/env/environment-host-ci-prerelease.sh "https://raw.githubusercontent.com/MulleFoundation/Foundation/prerelease/test/.mulle/etc/env/environment-host-ci-prerelease.sh" >&2 &&
+        mulle-sde craft --release &&
+        [ -x "./kitchen/Release/exe" -o "./kitchen/exe" ] &&
+        ( [ ! -x "./kitchen/Release/exe" ] || "./kitchen/Release/exe" ) &&
+        ( [ ! -x "./kitchen/exe" ] || "./kitchen/exe" )
