@@ -9,9 +9,9 @@ jobs:
 
    steps:
      - uses: actions/checkout@v2
-         if: ${{ ! env.ACT }}
+       if: ${{ ! env.ACT }}
 
      - name: Build Docker image
-         if: ${{ ! env.ACT }}
-        run: docker build .
+       if: ${{ ! env.ACT }}
+       run: docker build .
  
