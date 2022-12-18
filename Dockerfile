@@ -26,7 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
       apt-get update \
    && apt-get -y install cmake curl git ninja-build build-essential uuid-runtime bsdmainutils wget \
 \
-   && wget "https://raw.githubusercontent.com/mulle-sde/mulle-sde/prerelease/bin/installer-all" \
+   && wget "https://raw.githubusercontent.com/mulle-sde/mulle-sde/${MULLE_SDE_DEFAULT_VERSION:-release}/bin/installer-all" \
    && chmod 755 installer-all \
    && ./installer-all /usr no \
 \
