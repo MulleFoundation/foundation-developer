@@ -7,8 +7,12 @@ jobs:
    runs-on: ubuntu-latest
 
    steps:
-    - name: Install wget and sudo
-      run:  apt-get install wget sudo
+    - name: Install sudo
+      if: ${{ env.ACT }}
+      run:  apt-get install sudo
+
+    - name: Install wget
+      run:  sudo apt-get install wget
 
     - name: Set MULLE_HOSTNAME
       run: |

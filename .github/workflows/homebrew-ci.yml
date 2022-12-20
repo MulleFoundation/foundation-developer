@@ -16,21 +16,18 @@ jobs:
         MULLE_HOSTNAME="${MULLE_HOSTNAME:-ci-${name##*-}}"
         echo "MULLE_HOSTNAME=${MULLE_HOSTNAME}" >> $GITHUB_ENV
 
-    - name: Add to path
-      run:  echo "$HOME/bin" >> $GITHUB_PATH
-
     - name: Dump Environment
       run:  env | sort
 
     - name: Install prerelease
-      if: {{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
+      if: ${{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
       run: |
         brew install mulle-kybernetik/prerelease/foundation-developer
 
     - name: Install release
-      if: {{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
+      if: ${{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
       run: |
-        brew install mulle-kybernetik/prerelease/foundation-developer
+        brew install mulle-kybernetik/release/foundation-developer
         
     - name: Foundation Executable
       run: |

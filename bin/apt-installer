@@ -100,7 +100,7 @@ case "${VERSION_CODENAME}" in
    ;;
 
    *)
-      echo "Unsupported debian/ubuntu release  ${LSB_RELEASE}" >&2
+      echo "Unsupported debian/ubuntu release \"${VERSION_CODENAME}\"" >&2
       exit 1
    ;;
 esac
