@@ -18,17 +18,19 @@ See [The mulle-objc Community](//mulle-objc.github.io) for more information abou
 *mulle-objc* and *mulle-sde*.
 
 
-Extension                 | Type | Description
---------------------------|------|----------------------------
-foundation/objc-developer | meta | Create Objective-C projects
+| Extension                          | Type | Description                                                                                |
+|------------------------------------|------|--------------------------------------------------------------------------------------------|
+| `foundation/objc-developer`        | meta | mulle-objc cmake project based on `<Foundation/Foundation.h>`                              |
+| `foundation/compat-objc-developer` | meta | A cmake project based on `<Foundation/Foundation.h>`. Uses Xcode/clang on macOS            |
+| `foundation/objc-porter`           | meta | Experimental: Port an Objective-C project to mulle-objc based on <Foundation/Foundation.h> |
 
 ### Table of Contents
 
-- [Usage](#Usage)
 - [Install](#Install)
 - - [Packages](#Packages)
 - - [Script](#Script)
 - - [Docker](#Docker)
+- [Usage](#Usage)
 - [Relations](#Relations)
 
 
@@ -60,20 +62,17 @@ wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-develope
 
 ## Script
 
-*mulle-sde* provides an
-[installer-all](https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all).
+The script approach is suitable for all environments, but especially for those
+without a supported package managers like for instance *Fedora* or *FreeBSD*
 
-This is suitable for environments without supported package managers like for
-instance *Fedora* or *FreeBSD*.
-
-| Prerequisites     | Comment                                                |
-|-------------------|--------------------------------------------------------|
-| `build-essential` | The usual compiler tools like cc, ar, nm               |
-| `curl`            | To fetch stuff, or substitute with wget                |
-| `cmake`           | Shoot for cmake 3.15 or higher                         |
-| `sudo`            | Or run everything as root                              |
-| `uuid-runtime`    | `uuidgen` is needed by mulle-sde                       |
-| `bsdmainutils`    | Needed for `column`. A dependency that should go away. |
+| Prerequisites (debian) | Comment                                                |
+|------------------------|--------------------------------------------------------|
+| `build-essential`      | The usual compiler tools like cc, ar, nm               |
+| `curl`                 | To fetch stuff, or substitute with wget                |
+| `cmake`                | Shoot for cmake 3.15 or higher                         |
+| `sudo`                 | Or run everything as root                              |
+| `uuid-runtime`         | `uuidgen` is needed by mulle-sde                       |
+| `bsdmainutils`         | Needed for `column`. A dependency that should go away. |
 
 
 ### Install into /usr/local with sudo
@@ -94,6 +93,7 @@ You need to install the compiler [mulle-clang](//github.com/mulle-cc/mulle-clang
 and the debugger [mulle-gdb](//github.com/mulle-cc/mulle-gdb) separately (see
 next step)
 
+
 ### Install into ${HOME} (without sudo)
 
 ``` sh
@@ -108,11 +108,12 @@ mulle-test;" \
 ./installer-all ~ no
 ```
 
-
 ### Install mulle-clang and mulle-gdb
 
-Check the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases)
-for the proper version to download:
+The installation will always go into `/opt` and therefore will need *sudo*.
+Instructions how to unpack and relocate the installation manually are given on
+the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases)
+page:
 
 ``` sh
 curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb"
@@ -131,7 +132,6 @@ sudo dpkg --install "mulle-gdb_11.1.0-1_bullseye_amd64.deb"
 ## Docker
 
 Docker images are published to [dockerhub](https://hub.docker.com/r/mulleobjc/foundation).
-
 Pull an image with:
 
 ```sh
@@ -240,7 +240,7 @@ MulleFoundation everywhere else:
 ``` sh
 mkdir foo
 cd foo
-mulle-sde init -m foundation/objc-xcode-developer executable
+mulle-sde init -m foundation/compat-objc-developer executable
 ```
 
 Then just follow the instructions *mulle-sde* prints.
