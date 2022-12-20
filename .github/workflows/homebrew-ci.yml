@@ -27,7 +27,7 @@ jobs:
     - name: Install release
       if: ${{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
       run: |
-        brew install mulle-kybernetik/release/foundation-developer
+        brew install mulle-kybernetik/software/foundation-developer
         
     - name: Foundation Executable
       run: |
