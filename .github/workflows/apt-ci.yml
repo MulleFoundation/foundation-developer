@@ -1,0 +1,30 @@
+name: AptCI
+
+on: [push]
+
+jobs:
+  build:
+   runs-on: ubuntu-latest
+
+   steps:
+    - name: Dump Environment
+      run:  apt-get install wget
+
+    - name: Set MULLE_HOSTNAME
+      run: |
+        name="${GITHUB_REF##*/}"
+        MULLE_HOSTNAME="${MULLE_HOSTNAME:-ci-${name##*-}}"
+        echo "MULLE_HOSTNAME=${MULLE_HOSTNAME}" >> $GITHUB_ENV
+
+    - name: Dump Environment
+      run:  env | sort
+
+    - name: Install prerelease
+      if: ${{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
+      run: |
+           wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/prerelease/bin/apt-installer | sh
+
+    - name: Install release
+      if: ${{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
+      run: |
+           wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sh

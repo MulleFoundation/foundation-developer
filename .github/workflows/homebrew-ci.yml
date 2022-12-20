@@ -22,11 +22,15 @@ jobs:
     - name: Dump Environment
       run:  env | sort
 
-    - uses: actions/checkout@v3
-
-    - name: Install
+    - name: Install prerelease
+      if: {{ env.MULLE_HOSTNAME == "ci-prerelease" }}
       run: |
-        brew install mulle-kybernetik/software/foundation-developer
+        brew install mulle-kybernetik/prerelease/foundation-developer
+
+    - name: Install release
+      if: {{ env.MULLE_HOSTNAME != "ci-prerelease" }}
+      run: |
+        brew install mulle-kybernetik/prerelease/foundation-developer
         
     - name: Foundation Executable
       run: |

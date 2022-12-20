@@ -83,7 +83,11 @@ apt-get -q update &&
 apt-get -y install foundation-developer || exit 1
 
 case "${VERSION_CODENAME}" in
-   focal|bullseye)
+   lunar|kinetic|bookworm)
+      codename="bookworm"
+   ;;
+
+   jammy|impish|groovy|focal|bullseye)
       codename="bullseye"
    ;;
 
