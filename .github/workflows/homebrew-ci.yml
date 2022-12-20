@@ -23,12 +23,12 @@ jobs:
       run:  env | sort
 
     - name: Install prerelease
-      if: {{ env.MULLE_HOSTNAME == "ci-prerelease" }}
+      if: {{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
       run: |
         brew install mulle-kybernetik/prerelease/foundation-developer
 
     - name: Install release
-      if: {{ env.MULLE_HOSTNAME != "ci-prerelease" }}
+      if: {{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
       run: |
         brew install mulle-kybernetik/prerelease/foundation-developer
         

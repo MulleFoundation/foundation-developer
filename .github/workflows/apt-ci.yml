@@ -7,8 +7,8 @@ jobs:
    runs-on: ubuntu-latest
 
    steps:
-    - name: Dump Environment
-      run:  apt-get install wget
+    - name: Install wget and sudo
+      run:  apt-get install wget sudo
 
     - name: Set MULLE_HOSTNAME
       run: |
@@ -22,9 +22,9 @@ jobs:
     - name: Install prerelease
       if: ${{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
       run: |
-           wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/prerelease/bin/apt-installer | sh
+           wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/prerelease/bin/apt-installer | sudo sh
 
     - name: Install release
       if: ${{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
       run: |
-           wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sh
+           wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sudo sh
