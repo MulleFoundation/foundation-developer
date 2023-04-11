@@ -2,10 +2,10 @@
 #
 ar
 as
-cc;optional
-clang;optional
+cc
+clang
 diff
-gcc;optional
+gcc
 ld
 nm
 ranlib

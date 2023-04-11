@@ -1,74 +1,3 @@
-# foundation-developer
-
-#### 👒 Objective C with mulle-sde and the mulle-objc Foundation
-
-**foundation-developer** is a collection of *mulle-sde extensions* to support 
-development with the [MulleFoundation](//github.com/MulleFoundation) and
-the [Apple Foundation](https://developer.apple.com/documentation/foundation?language=objc).
-As a package for **homebrew** (OS X) and **apt** (Linux) *foundation-developer*
-is the most convenient way to install [mulle-objc](//github.com/mulle-objc)
-and [mulle-sde](//github.com/mulle-sde).
-
-
-See [The mulle-objc Community](//mulle-objc.github.io) for more information about
-*mulle-objc* and *mulle-sde*.
-
-
-| Release Version                                       | Release Notes
-|-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//foundation-developer.svg?branch=release) [![Build Status](https://github.com//foundation-developer/workflows/CI/badge.svg?branch=release)](//github.com//foundation-developer/actions)| [RELEASENOTES](RELEASENOTES.md) |
-
-
-
-## Usage
-
-The following examples show how to use the *MulleFoundation* with the
-*mulle-sde* environment. If you prefer `Makefiles` or some such, read about
-the [legacy workflow](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_legacy.html).
-
-
-### Check that the (meta) extensions are found:
-
-``` sh
-mulle-sde extension show
-```
-
-
-### Create an Objective-C executable project
-
-This kind of project works with the Apple Foundation on macOS and with the
-MulleFoundation everywhere else:
-
-``` sh
-mkdir foo
-cd foo
-mulle-sde init -m foundation/compat-objc-developer executable
-```
-
-Then just follow the instructions *mulle-sde* prints.
-
-> #### Tips
->
-> If you want to use the MulleFoundation on macOS as well, choose
-> the meta extension `foundation/objc-developer` instead.
->
-> There may appear an error because of a missing MulleObjCDecimalLibrary. This
-> is normal and harmless.
->
-
-
-
-
-
-
-## Add
-
-Use [mulle-sde](//github.com/mulle-sde) to add foundation-developer to your project:
-
-``` sh
-mulle-sde add github:MulleFoundation/foundation-developer
-```
-
 ## Install
 
 An initial install will only add *mulle-sde* to your system. The
@@ -247,11 +176,5 @@ You can also build the docker image with the
 sudo docker build -t foundation 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
 sudo docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t foundation
 ```
-
-
-
-## Author
-
-[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
 
 

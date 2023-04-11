@@ -1,11 +1,11 @@
 mulle-clang
-mulle-scan-build;optional
-mulle-gdb;optional
-cmake;optional
-ninja;optional
-make;optional
-autoconf;optional
-autoreconf;optional
+mulle-scan-build
+mulle-gdb
+cmake
+ninja
+make
+autoconf
+autoreconf
 
 column
 
@@ -13,8 +13,8 @@ column
 # Why are these optional ? Because in a setting where you compile a project
 # without mulle-sde-developer installed it should still build.
 #
-mulle-cmake-graphviz-include;optional
-mulle-create-build-motd;optional
+mulle-cmake-graphviz-include
+mulle-create-build-motd
 
 #
 # Optional tools
@@ -22,15 +22,24 @@ mulle-create-build-motd;optional
 #   Have no zip ? Not a deal breaker
 #   But we can also live without tar and gzip, if you use just git..
 #
-curl;optional
-git;optional
-gzip;optional
-id;optional
-inotifywait;optional
-ssh;optional
-tar;optional
-tty;optional
-wget;optional
-zip;optional
-xz;optional
-bzip2;optional
+clib
+clib-configure
+clib-install
+clib-uninstall
+clib-upgrade
+clib-build
+clib-init
+clib-search
+clib-update
+curl
+git
+gzip
+id
+inotifywait
+ssh
+tar
+tty
+wget
+zip
+xz
+bzip2

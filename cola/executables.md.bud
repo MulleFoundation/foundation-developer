@@ -1,0 +1,8 @@
+## Extensions
+
+| Extension                          | Type | Description                                                                                |
+|------------------------------------|------|--------------------------------------------------------------------------------------------|
+| `foundation/objc-developer`        | meta | mulle-objc cmake project based on `<Foundation/Foundation.h>`                              |
+| `foundation/compat-objc-developer` | meta | A cmake project based on `<Foundation/Foundation.h>`. Uses Xcode/clang on macOS            |
+| `foundation/objc-porter`           | meta | Experimental: Port an Objective-C project to mulle-objc based on <Foundation/Foundation.h> |
+

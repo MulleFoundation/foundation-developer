@@ -29,3 +29,8 @@ version.old
 .gdb_history
 cmake-build-*/
 .ackrc
+wilted/
+mulle-template-composer-*
+mulle-markdown-preview-*.html
+build-*
+*.sublime-workspace

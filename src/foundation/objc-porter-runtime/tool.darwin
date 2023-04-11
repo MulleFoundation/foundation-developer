@@ -2,11 +2,11 @@
 #
 ar
 as
-cc;optional
-clang;optional
+cc
+clang
 diff
-gcc;optional
-dsymutil;optional
+gcc
+dsymutil
 install_name_tool
 ld
 nm
@@ -16,4 +16,4 @@ xcodebuild
 xcrun
 sw_vers
 inotifywait;remove
-fswatch;optional
+fswatch

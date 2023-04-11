@@ -1,0 +1,7 @@
+## You are here
+
+*foundation-developer* provides `<Foundation/Foundation.h>` to your
+*mulle-sde* projects. It is a thin package atop of
+[mulle-foundation-developer](//github.com/MulleFoundation/mulle-foundation-developer):
+
+![package relationships](dox/relationships.svg)

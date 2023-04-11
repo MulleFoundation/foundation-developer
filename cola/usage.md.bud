@@ -1,0 +1,37 @@
+## Usage
+
+The following examples show how to use the *MulleFoundation* with the
+*mulle-sde* environment. If you prefer `Makefiles` or some such, read about
+the [legacy workflow](https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_legacy.html).
+
+
+### Check that the (meta) extensions are found:
+
+``` sh
+mulle-sde extension show
+```
+
+
+### Create an Objective-C executable project
+
+This kind of project works with the Apple Foundation on macOS and with the
+MulleFoundation everywhere else:
+
+``` sh
+mkdir foo
+cd foo
+mulle-sde init -m foundation/compat-objc-developer executable
+```
+
+Then just follow the instructions *mulle-sde* prints.
+
+> #### Tips
+>
+> If you want to use the MulleFoundation on macOS as well, choose
+> the meta extension `foundation/objc-developer` instead.
+>
+> There may appear an error because of a missing MulleObjCDecimalLibrary. This
+> is normal and harmless.
+>
+
+
