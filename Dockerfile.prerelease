@@ -1,0 +1,52 @@
+#
+# build for ubuntu and debian with
+
+FROM ubuntu:latest
+# docker build --no-cache -t ubuntu:mulle-ci-prerelease -f Dockerfile.prerelease .
+
+# FROM debian:bullseye-slim
+# docker build --no-cache -t debian:mulle-ci-prerelease -f Dockerfile.prerelease .
+
+# make it fresh
+# add en UTF-8 as a locale
+ENV OTHER_PROJECTS \
+mulle-sde/mulle-sde-developer; \
+mulle-c/mulle-c-developer; \
+mulle-objc/mulle-objc-developer; \
+MulleFoundation/mulle-foundation-developer; \
+MulleFoundation/foundation-developer;
+
+ENV SDE_PROJECTS    mulle-test
+
+# Uncomment for prerelease
+ENV MULLE_SDE_DEFAULT_VERSION prerelease
+ENV MULLE_HOSTNAME ci-prerelease
+
+#   && apt-get -y install locales \
+#   && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && locale-gen \
+
+# bsdmainutils for column
+# in theory we could use the tools from mulle-clang instead of build-essential
+# but they are untested...
+
+RUN DEBIAN_FRONTEND=noninteractive \
+      apt-get update \
+   && apt-get -y install libcurl4-gnutls-dev cmake curl git ninja-build build-essential uuid-runtime bsdmainutils wget \
+\
+   && git clone https://github.com/clibs/clib.git clib \
+   && ( cd clib && make install )
+\
+   && wget "https://raw.githubusercontent.com/mulle-sde/mulle-sde/prerelease/bin/installer-all" \
+   && chmod 755 installer-all \
+   && ./installer-all /usr no \
+\
+   && wget "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb"  \
+   && dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb" \
+
+
+
+###       ###
+### BUILD ###
+###       ###
+# sudo docker build -t test 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/Dockerfile'
+# sudo docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -i -t test
