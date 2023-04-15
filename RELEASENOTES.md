@@ -1,3 +1,9 @@
+## 0.21.0
+
+* remove package.json as it conflicts with clib.json
+* fixed for better tool support in mulle-env
+
+
 ### 0.20.2
 
 * Various small improvements

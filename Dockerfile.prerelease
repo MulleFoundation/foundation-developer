@@ -34,7 +34,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
    && apt-get -y install libcurl4-gnutls-dev cmake curl git ninja-build build-essential uuid-runtime bsdmainutils wget \
 \
    && git clone https://github.com/clibs/clib.git clib \
-   && ( cd clib && make install )
+   && ( cd clib && make install ) \
 \
    && wget "https://raw.githubusercontent.com/mulle-sde/mulle-sde/prerelease/bin/installer-all" \
    && chmod 755 installer-all \
