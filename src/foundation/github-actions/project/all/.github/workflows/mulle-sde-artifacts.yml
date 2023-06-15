@@ -1,0 +1,76 @@
+name: Artifacts
+
+on:
+  release:
+     types: [ prereleased, released ]
+
+env:
+  BUILD_TYPE: release
+  OTHER_PROJECTS: "MulleFoundation/foundation-developer;
+MulleFoundation/mulle-foundation-developer;
+mulle-objc/mulle-objc-developer;
+mulle-c/mulle-c-developer;"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]
+
+    steps:
+    - name: Add to path
+      run:  echo "$HOME/bin" >> $GITHUB_PATH
+
+    - uses: actions/checkout@v3
+
+    - uses: mulle-sde/github-ci@v1
+
+    - uses: mulle-cc/github-ci@v4
+
+    - name: Choose musl on Linux
+      run: |
+           [ "${{ runner.os }}" != "Linux" ] || mulle-sde env set MULLE_CRAFT_SDKS "musl"
+    - name: Mulle-SDE Craft
+      run: mulle-sde craft --release
+
+    - name: Get Executable
+      run: echo "exepath=$(mulle-sde product list)" >> $GITHUB_OUTPUT
+      id: executable
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifact.${{ runner.os }}
+        path: ${{ steps.executable.outputs.exepath }}
+        retention-days: 1
+
+  release:
+    needs: [ build ]
+    name: Upload Artifacts to Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Linux Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact.Linux
+          # actual file will be ${{ steps.executable.outputs.exepath }} though!
+
+      - name: Rename Linux Artifact
+        run: |
+             mv ${{ github.workspace }}/${{ github.event.repository.name }} ${{ github.workspace }}/${{ github.event.repository.name }}.linux
+
+      - name: Download macOS Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact.macOS
+
+      - name: Rename macOS Artifact
+        run: mv ${{ github.workspace }}/${{ github.event.repository.name }} ${{ github.workspace }}/${{ github.event.repository.name }}.macos
+
+      - name: Upload Artifacts
+        uses: alexellis/upload-assets@0.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          asset_paths: '[ "${{ github.event.repository.name }}.*" ]'
