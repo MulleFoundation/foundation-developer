@@ -83,7 +83,7 @@ apt-get -q update &&
 apt-get -y install foundation-developer || exit 1
 
 case "${VERSION_CODENAME}" in
-   lunar|kinetic|bookworm)
+   mantic|lunar|kinetic|bookworm)
       codename="bookworm"
    ;;
 
