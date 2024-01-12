@@ -1,3 +1,8 @@
+## 0.22.0
+
+* environment-init was a bad idea and it has been removed along with environment-upgrade
+
+
 ## 0.21.0
 
 * remove package.json as it conflicts with clib.json

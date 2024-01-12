@@ -9,7 +9,9 @@ jobs:
    steps:
     - name: Install sudo
       if: ${{ env.ACT }}
-      run:  apt-get install sudo
+      run:  |
+        apt-get update
+        apt-get install sudo
 
     - name: Install wget
       run:  sudo apt-get install wget
