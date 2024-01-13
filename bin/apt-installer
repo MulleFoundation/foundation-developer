@@ -85,18 +85,22 @@ apt-get -y install foundation-developer || exit 1
 case "${VERSION_CODENAME}" in
    noble|mantic|lunar|kinetic|bookworm)
       codename="bookworm"
+      version="${MULLE_CLANG_VERSION}"
    ;;
 
    jammy|impish|groovy|focal|bullseye)
       codename="bullseye"
+      version="14.0.6.2"
    ;;
 
    eoan|disco|cosmic|bionic|buster)
       codename="buster"
+      version="14.0.6.2"
    ;;
 
    artful|zesty|yakkety|xenial|stretch)
       codename="stretch"
+      version="14.0.6.2"
    ;;
 
    *)
@@ -107,9 +111,9 @@ esac
 
 # https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/11.0.0.0-RC2/mulle-clang-11.0.0.0-buster-amd64.deb
 architecture="${MULLE_CLANG_ARCHITECTURE:-`dpkg --print-architecture`}"
-filename="mulle-clang-${MULLE_CLANG_VERSION}-${codename}-${architecture}.deb"
+filename="mulle-clang-${version}-${codename}-${architecture}.deb"
 
-url="https://github.com/mulle-cc/mulle-clang-project/releases/download/${MULLE_CLANG_VERSION}"
+url="https://github.com/mulle-cc/mulle-clang-project/releases/download/${version}"
 url="${url}/${filename}"
 
 echo "Downloading ${url} ..." >&2
