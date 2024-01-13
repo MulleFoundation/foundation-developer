@@ -7,26 +7,33 @@ jobs:
    runs-on: ubuntu-latest
 
    steps:
-    - name: Install wget
-      run: |
-         apt-get update
-         apt-get install -y wget sudo
+   - name: Install sudo
+     run: |
+        if [ "${{ env.ACT }}" = "true" ]; then
+           apt-get update
+           apt-get install -y sudo
+        fi
 
-    - name: Set MULLE_HOSTNAME
-      run: |
-        name="${GITHUB_REF##*/}"
-        MULLE_HOSTNAME="${MULLE_HOSTNAME:-ci-${name##*-}}"
-        echo "MULLE_HOSTNAME=${MULLE_HOSTNAME}" >> $GITHUB_ENV
+   - name: Install wget
+     run: |
+        sudo apt-get update
+        sudo apt-get install -y wget
 
-    - name: Dump Environment
-      run:  env | sort
+   - name: Set MULLE_HOSTNAME
+     run: |
+       name="${GITHUB_REF##*/}"
+       MULLE_HOSTNAME="${MULLE_HOSTNAME:-ci-${name##*-}}"
+       echo "MULLE_HOSTNAME=${MULLE_HOSTNAME}" >> $GITHUB_ENV
 
-    - name: Install prerelease
-      if: ${{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
-      run: |
-           wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/prerelease/bin/apt-installer | sudo sh
+   - name: Dump Environment
+     run:  env | sort
 
-    - name: Install release
-      if: ${{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
-      run: |
-           wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sudo sh
+   - name: Install prerelease
+     if: ${{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
+     run: |
+        wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/prerelease/bin/apt-installer | sudo sh
+
+   - name: Install release
+     if: ${{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
+     run: |
+        wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sudo sh
