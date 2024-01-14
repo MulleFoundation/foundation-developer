@@ -1,4 +1,6 @@
-## 0.22.0
+## 0.22.0 + 0.23.0
+
+changed to 0.23.0 to be in lockstep with mulle-objc-runtime version
 
 * environment-init was a bad idea and it has been removed along with environment-upgrade
 
