@@ -5,6 +5,7 @@ FROM ubuntu:latest
 ENV OTHER_PROJECTS \
 mulle-sde/mulle-sde-developer; \
 mulle-c/mulle-c-developer; \
+mulle-core/mulle-core-developer; \
 mulle-objc/mulle-objc-developer; \
 MulleFoundation/mulle-foundation-developer; \
 MulleFoundation/foundation-developer;
@@ -30,6 +31,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
    && chmod 755 installer-all \
    && ./installer-all /usr no \
 \
-   && wget "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb"  \
-   && dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb"
+   && wget "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bookworm-amd64.deb"  \
+   && dpkg --install "mulle-clang-17.0.6.0-bookworm-amd64.deb"
 

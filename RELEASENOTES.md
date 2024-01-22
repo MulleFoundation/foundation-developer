@@ -1,3 +1,8 @@
+## 0.23.0
+
+* Various small improvements
+
+
 ## 0.22.0 + 0.23.0
 
 changed to 0.23.0 to be in lockstep with mulle-objc-runtime version

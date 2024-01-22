@@ -9,15 +9,13 @@ As a package for **homebrew** (OS X) and **apt** (Linux) *foundation-developer*
 is the most convenient way to install [mulle-objc](//github.com/mulle-objc)
 and [mulle-sde](//github.com/mulle-sde).
 
+Installing foundation-developer is also the main way to install all the other
+developer packages, like mulle-objc-developer or mulle-core-developer.
 
 See [The mulle-objc Community](//mulle-objc.github.io) for more information about
 *mulle-objc* and *mulle-sde*.
 
 
-
-| Release Version                                       | Release Notes
-|-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/foundation-developer.svg?branch=release) [![Build Status](https://github.com/MulleFoundation/foundation-developer/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/foundation-developer/actions) | [RELEASENOTES](RELEASENOTES.md) |
 
 
 
@@ -61,14 +59,10 @@ Then just follow the instructions *mulle-sde* prints.
 
 
 
+### You are here
 
-## Add
+![Overview](overview.dot.svg)
 
-Use [mulle-sde](//github.com/mulle-sde) to add foundation-developer to your project:
-
-``` sh
-mulle-sde add github:MulleFoundation/foundation-developer
-```
 
 ## Install
 
@@ -116,6 +110,7 @@ chmod 755 installer-all && \
 sudo OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
 mulle-objc/mulle-objc-developer; \
+mulle-core/mulle-core-developer; \
 mulle-c/mulle-c-developer;" \
 SDE_PROJECTS="mulle-sde-developer; \
 mulle-test;" \
@@ -135,6 +130,7 @@ chmod 755 installer-all && \
 OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
 mulle-objc/mulle-objc-developer; \
+mulle-core/mulle-core-developer; \
 mulle-c/mulle-c-developer;" \
 SDE_PROJECTS="mulle-sde-developer; \
 mulle-test;" \
@@ -149,8 +145,8 @@ the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases)
 page:
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb"
-sudo dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bookworm-amd64.deb"
+sudo dpkg --install "mulle-clang-17.0.6.0-bookworm-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
@@ -213,8 +209,8 @@ sudo apt-get install foundation-developer
 #### Install mulle-clang and mulle-gdb
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb"
-sudo dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bullseye-amd64.deb"
+sudo dpkg --install "mulle-clang-17.0.6.0-bullseye-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)

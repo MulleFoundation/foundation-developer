@@ -44,6 +44,7 @@ chmod 755 installer-all && \
 sudo OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
 mulle-objc/mulle-objc-developer; \
+mulle-core/mulle-core-developer; \
 mulle-c/mulle-c-developer;" \
 SDE_PROJECTS="mulle-sde-developer; \
 mulle-test;" \
@@ -63,6 +64,7 @@ chmod 755 installer-all && \
 OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
 mulle-objc/mulle-objc-developer; \
+mulle-core/mulle-core-developer; \
 mulle-c/mulle-c-developer;" \
 SDE_PROJECTS="mulle-sde-developer; \
 mulle-test;" \
@@ -77,8 +79,8 @@ the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases)
 page:
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb"
-sudo dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bookworm-amd64.deb"
+sudo dpkg --install "mulle-clang-17.0.6.0-bookworm-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
@@ -141,8 +143,8 @@ sudo apt-get install foundation-developer
 #### Install mulle-clang and mulle-gdb
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.2/mulle-clang-14.0.6.2-bullseye-amd64.deb"
-sudo dpkg --install "mulle-clang-14.0.6.2-bullseye-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bullseye-amd64.deb"
+sudo dpkg --install "mulle-clang-17.0.6.0-bullseye-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
