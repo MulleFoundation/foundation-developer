@@ -25,11 +25,14 @@ ENV SDE_PROJECTS    mulle-test
 
 RUN DEBIAN_FRONTEND=noninteractive \
       apt-get update \
-   && apt-get -y install cmake curl git ninja-build build-essential uuid-runtime bsdmainutils wget \
+   && apt-get -y install cmake curl git ninja-build build-essential uuid-runtime bsdmainutils wget libcurl4-gnutls-dev \
 \
    && wget "https://raw.githubusercontent.com/mulle-sde/mulle-sde/${MULLE_SDE_DEFAULT_VERSION:-release}/bin/installer-all" \
    && chmod 755 installer-all \
    && ./installer-all /usr no \
+\
+   && git clone https://github.com/clibs/clib.git /tmp/clib \
+   && ( cd /tmp/clib ; make ; make install ) \
 \
    && wget "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bookworm-amd64.deb"  \
    && dpkg --install "mulle-clang-17.0.6.0-bookworm-amd64.deb"
