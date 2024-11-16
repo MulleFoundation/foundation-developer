@@ -34,6 +34,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
    && git clone https://github.com/clibs/clib.git /tmp/clib \
    && ( cd /tmp/clib ; make ; make install ) \
 \
-   && wget "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bookworm-amd64.deb"  \
-   && dpkg --install "mulle-clang-17.0.6.0-bookworm-amd64.deb"
+   && wget "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.2/mulle-clang-17.0.6.2-bookworm-amd64.deb"  \
+   && dpkg --install "mulle-clang-17.0.6.2-bookworm-amd64.deb"
 
