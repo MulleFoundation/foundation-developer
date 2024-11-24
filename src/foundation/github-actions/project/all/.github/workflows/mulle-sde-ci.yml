@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest] # macos-latest,
+        os: [ ubuntu-24.04 ] # macos-latest,
 
     steps:
     - name: Set MULLE_HOSTNAME
@@ -38,7 +38,7 @@ jobs:
 
     - uses: mulle-sde/github-ci@v2
 
-    - uses: mulle-cc/github-ci@v4
+    - uses: mulle-cc/github-ci@v5
 
     - name: Dump Project Environment
       run:  |
