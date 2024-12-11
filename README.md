@@ -105,7 +105,7 @@ without a supported package managers like for instance *Fedora* or *FreeBSD*
 #### Install into /usr/local with sudo
 
 ``` sh
-curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all' && \
+curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/master/bin/installer-all' && \
 chmod 755 installer-all && \
 sudo OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
@@ -125,7 +125,7 @@ next step)
 #### Install into ${HOME} (without sudo)
 
 ``` sh
-curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all' && \
+curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/master/bin/installer-all' && \
 chmod 755 installer-all && \
 OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
@@ -145,8 +145,8 @@ the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases)
 page:
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bookworm-amd64.deb"
-sudo dpkg --install "mulle-clang-17.0.6.0-bookworm-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.2/mulle-clang-17.0.6.2-bookworm-amd64.deb"
+sudo dpkg --install "mulle-clang-17.0.6.2-bookworm-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
@@ -209,7 +209,7 @@ sudo apt-get install foundation-developer
 #### Install mulle-clang and mulle-gdb
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.0/mulle-clang-17.0.6.0-bullseye-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/17.0.6.2/mulle-clang-17.0.6.0-bullseye-amd64.deb"
 sudo dpkg --install "mulle-clang-17.0.6.0-bullseye-amd64.deb"
 ```
 
