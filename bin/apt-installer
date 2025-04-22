@@ -83,7 +83,7 @@ apt-get -q update &&
 apt-get -y install foundation-developer || exit 1
 
 case "${VERSION_CODENAME}" in
-   noble|mantic|lunar|kinetic|bookworm)
+   plucky|oracular|noble|mantic|lunar|kinetic|bookworm|trixie|forky|duke)
       codename="bookworm"
       version="${MULLE_CLANG_VERSION}"
    ;;
