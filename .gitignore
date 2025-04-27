@@ -35,3 +35,6 @@ mulle-markdown-preview-*.html
 build-*
 *.sublime-workspace
 cola/wilted/
+*.bak
+.mulle/etc/make/build-dir
+vgcore.*
