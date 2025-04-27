@@ -1,3 +1,7 @@
+### 0.24.1
+
+Various small improvements
+
 ## 0.24.0
 
 * change from release branch to master
