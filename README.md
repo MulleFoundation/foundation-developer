@@ -84,7 +84,7 @@ For debian/ubuntu, you can use this one-liner to install everything including
 apt keys, that are likely to be required:
 
 ``` sh
-wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer \
+wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/apt-installer \
 | sudo sh
 ```
 
@@ -105,7 +105,7 @@ without a supported package managers like for instance *Fedora* or *FreeBSD*
 #### Install into /usr/local with sudo
 
 ``` sh
-curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/master/bin/installer-all' && \
+curl -L -O 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/installer' && \
 chmod 755 installer-all && \
 sudo OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
@@ -125,7 +125,7 @@ next step)
 #### Install into ${HOME} (without sudo)
 
 ``` sh
-curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/master/bin/installer-all' && \
+curl -L -O 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/installer' && \
 chmod 755 installer-all && \
 OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
