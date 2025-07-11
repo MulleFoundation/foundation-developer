@@ -1,0 +1,121 @@
+name: URL Health Check
+
+on:
+  schedule:
+    # Run every day at 9 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allow manual triggering
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  check-urls:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Check installer URL
+      id: check-installer
+      run: |
+        URL="https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/installer"
+        echo "Checking: $URL"
+        
+        if curl -f -s -I "$URL" > /dev/null; then
+          echo "✅ installer URL is accessible"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "❌ installer URL is NOT accessible"
+          echo "status=failed" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+        
+    - name: Check apt-installer URL
+      id: check-apt-installer
+      run: |
+        URL="https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/apt-installer"
+        echo "Checking: $URL"
+        
+        if curl -f -s -I "$URL" > /dev/null; then
+          echo "✅ apt-installer URL is accessible"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "❌ apt-installer URL is NOT accessible"
+          echo "status=failed" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+        
+    - name: Detailed URL Analysis
+      if: always()
+      run: |
+        echo "=== Detailed URL Analysis ==="
+        
+        echo "--- installer URL ---"
+        URL1="https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/installer"
+        curl -v "$URL1" -o /dev/null || echo "Failed to fetch installer"
+        
+        echo "--- apt-installer URL ---"
+        URL2="https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/apt-installer"
+        curl -v "$URL2" -o /dev/null || echo "Failed to fetch apt-installer"
+        
+        echo "--- Repository branch check ---"
+        # Check if the repository and branch still exist
+        REPO_API="https://api.github.com/repos/MulleFoundation/foundation-developer/branches/master"
+        echo "Checking repository branch via API: $REPO_API"
+        curl -f -s "$REPO_API" | jq -r '.name // "Branch not found"' || echo "API call failed"
+
+    - name: Create Issue on Failure
+      if: failure()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const title = '🚨 URL Health Check Failed';
+          const body = `
+          ## URL Health Check Failure
+          
+          One or more monitored URLs are not accessible:
+          
+          - **installer URL**: https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/installer
+          - **apt-installer URL**: https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/apt-installer
+          
+          **Workflow Run**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          
+          **Possible causes**:
+          - Repository was moved or deleted
+          - Branch name changed from 'master' to 'main'
+          - Files were moved or renamed
+          - GitHub raw content URL structure changed
+          
+          **Action Required**: Please verify the URLs and update any references if necessary.
+          `;
+          
+          // Check if an issue already exists
+          const issues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            labels: ['url-health-check']
+          });
+          
+          const existingIssue = issues.data.find(issue => issue.title === title);
+          
+          if (!existingIssue) {
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['url-health-check', 'bug']
+            });
+          } else {
+            // Update existing issue with new information
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: existingIssue.number,
+              body: `URL health check failed again on ${new Date().toISOString()}\n\nWorkflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`
+            });
+          }
