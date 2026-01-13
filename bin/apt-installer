@@ -1,6 +1,6 @@
 #! /bin/sh -x
 
-MULLE_CLANG_VERSION="${MULLE_CLANG_VERSION:-17.0.6.2}"
+MULLE_CLANG_VERSION="${MULLE_CLANG_VERSION:-21.1.8.1}"
 
 if [ ! -w /etc/apt/sources.list.d ]
 then
