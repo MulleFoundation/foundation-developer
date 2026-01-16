@@ -1,3 +1,11 @@
+### 0.24.2
+
+
+
+
+* new TOC.md providing structured overview for AI tools
+* covers installation, setup, workflow, and integration points
+
 ### 0.24.1
 
 Various small improvements
