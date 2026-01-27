@@ -71,8 +71,8 @@ fi
 #
 echo "Installing apt keys..." >&2
 
-"${CURL}" ${CURLFLAGS} "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | apt-key add - || exit 1
-echo "deb [arch=all] http://www.mulle-kybernetik.com ${VERSION_CODENAME} main" > "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" || exit 1
+"${CURL}" ${CURLFLAGS} "https://www.mulle-kybernetik.com/dists/debian-admin-pub.asc" | gpg --dearmor > /usr/share/keyrings/mulle-kybernetik-archive-keyring.gpg || exit 1
+echo "deb [arch=all signed-by=/usr/share/keyrings/mulle-kybernetik-archive-keyring.gpg] http://www.mulle-kybernetik.com ${VERSION_CODENAME} main" > "/etc/apt/sources.list.d/mulle-kybernetik.com-main.list" || exit 1
 
 #
 # Now get the repository info and install or upgrade foundation-developer
@@ -83,7 +83,12 @@ apt-get -q update &&
 apt-get -y install foundation-developer || exit 1
 
 case "${VERSION_CODENAME}" in
-   plucky|oracular|noble|mantic|lunar|kinetic|bookworm|trixie|forky|duke)
+   trixie|noble|plucky|questing)
+      codename="trixie"
+      version="${MULLE_CLANG_VERSION}"
+   ;;
+
+   oracular|mantic|lunar|kinetic|bookworm|forky|duke)
       codename="bookworm"
       version="${MULLE_CLANG_VERSION}"
    ;;
