@@ -10,13 +10,10 @@ is the most convenient way to install [mulle-objc](//github.com/mulle-objc)
 and [mulle-sde](//github.com/mulle-sde).
 
 Installing foundation-developer is also the main way to install all the other
-developer packages, like mulle-objc-developer or mulle-core-developer.
+developer packages, like  [mulle-objc-developer](//github.com/mulle-objc/mulle-objc-developer).
 
-See [The mulle-objc Community](//mulle-objc.github.io) for more information about
+See the [mulle-objc](//mulle-objc.github.io) site for more information about
 *mulle-objc* and *mulle-sde*.
-
-
-
 
 
 ## Usage
