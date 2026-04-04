@@ -31,9 +31,9 @@ jobs:
    - name: Install prerelease
      if: ${{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
      run: |
-        wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/prerelease/bin/apt-installer | sudo sh
+        wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/prerelease/bin/apt-installer | sudo sh
 
    - name: Install release
      if: ${{ env.MULLE_HOSTNAME != 'ci-prerelease' }}
      run: |
-        wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer | sudo sh
+        wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/${{ github.ref_name }}/bin/apt-installer | sudo sh

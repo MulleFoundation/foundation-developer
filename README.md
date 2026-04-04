@@ -10,13 +10,10 @@ is the most convenient way to install [mulle-objc](//github.com/mulle-objc)
 and [mulle-sde](//github.com/mulle-sde).
 
 Installing foundation-developer is also the main way to install all the other
-developer packages, like mulle-objc-developer or mulle-core-developer.
+developer packages, like  [mulle-objc-developer](//github.com/mulle-objc/mulle-objc-developer).
 
-See [The mulle-objc Community](//mulle-objc.github.io) for more information about
+See the [mulle-objc](//mulle-objc.github.io) site for more information about
 *mulle-objc* and *mulle-sde*.
-
-
-
 
 
 ## Usage
@@ -209,17 +206,12 @@ sudo apt-get install foundation-developer
 #### Install mulle-clang and mulle-gdb
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/21.1.8.1/mulle-clang-21.1.8.1-bookworm-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/21.1.8.1/mulle-clang-21.1.8.1-trixie-amd64.deb"
 sudo dpkg --install "mulle-clang-21.1.8.1-bookworm-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
-for the proper version to download:
-
-``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-gdb/releases/download/11.1.0.0/mulle-gdb_11.1.0-1_bullseye_amd64.deb"
-sudo dpkg --install "mulle-gdb_11.1.0-1_bullseye_amd64.deb"
-```
+for the proper version to build and install.
 
 ### Docker
 
