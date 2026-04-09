@@ -48,3 +48,4 @@ build-9dae/
 environment-user-*.sh
 .roam
 .graveyard
+*.tmp.*
