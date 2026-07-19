@@ -13,6 +13,9 @@ task until you have completed ALL of these commands in order:
 mulle-sde vibecoding on          # detach training wheels for freewheeling AIs
 mulle-sde commands               # what's available
 mulle-bashfunctions flags        # how to trace mulle-sde operations
+mulle-sde api help
+mulle-sde code help
+mulle-sde howto help
 mulle-sde api list               # available API information
 mulle-sde howto list             # available tooling information
 mulle-sde howto cat dependency
