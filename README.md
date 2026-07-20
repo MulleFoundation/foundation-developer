@@ -10,10 +10,13 @@ is the most convenient way to install [mulle-objc](//github.com/mulle-objc)
 and [mulle-sde](//github.com/mulle-sde).
 
 Installing foundation-developer is also the main way to install all the other
-developer packages, like  [mulle-objc-developer](//github.com/mulle-objc/mulle-objc-developer).
+developer packages, like mulle-objc-developer or mulle-core-developer.
 
-See the [mulle-objc](//mulle-objc.github.io) site for more information about
+See [The mulle-objc Community](//mulle-objc.github.io) for more information about
 *mulle-objc* and *mulle-sde*.
+
+
+
 
 
 ## Usage
@@ -81,7 +84,7 @@ For debian/ubuntu, you can use this one-liner to install everything including
 apt keys, that are likely to be required:
 
 ``` sh
-wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/apt-installer \
+wget -qO - https://raw.githubusercontent.com/MulleFoundation/foundation-developer/release/bin/apt-installer \
 | sudo sh
 ```
 
@@ -102,7 +105,7 @@ without a supported package managers like for instance *Fedora* or *FreeBSD*
 #### Install into /usr/local with sudo
 
 ``` sh
-curl -L -O 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/installer' && \
+curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/master/bin/installer-all' && \
 chmod 755 installer-all && \
 sudo OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
@@ -122,7 +125,7 @@ next step)
 #### Install into ${HOME} (without sudo)
 
 ``` sh
-curl -L -O 'https://raw.githubusercontent.com/MulleFoundation/foundation-developer/refs/heads/master/bin/installer' && \
+curl -L -O 'https://raw.githubusercontent.com/mulle-sde/mulle-sde/master/bin/installer-all' && \
 chmod 755 installer-all && \
 OTHER_PROJECTS="MulleFoundation/foundation-developer; \
 MulleFoundation/mulle-foundation-developer; \
@@ -142,8 +145,8 @@ the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases)
 page:
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/21.1.8.1/mulle-clang-21.1.8.1-bookworm-amd64.deb"
-sudo dpkg --install "mulle-clang-21.1.8.1-bookworm-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/22.1.2.5/mulle-clang-22.1.2.5-bookworm-amd64.deb"
+sudo dpkg --install "mulle-clang-22.1.2.5-bookworm-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
@@ -206,12 +209,17 @@ sudo apt-get install foundation-developer
 #### Install mulle-clang and mulle-gdb
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/21.1.8.1/mulle-clang-21.1.8.1-trixie-amd64.deb"
-sudo dpkg --install "mulle-clang-21.1.8.1-bookworm-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/22.1.2.5/mulle-clang-22.1.2.5-bookworm-amd64.deb"
+sudo dpkg --install "mulle-clang-22.1.2.5-bookworm-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
-for the proper version to build and install.
+for the proper version to download:
+
+``` sh
+curl -L -O "https://github.com/mulle-cc/mulle-gdb/releases/download/11.1.0.0/mulle-gdb_11.1.0-1_bullseye_amd64.deb"
+sudo dpkg --install "mulle-gdb_11.1.0-1_bullseye_amd64.deb"
+```
 
 ### Docker
 
