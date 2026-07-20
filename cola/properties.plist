@@ -8,6 +8,6 @@
       repo="foundation-developer";
       homepage="https://github.com/MulleFoundation/foundation-developer";
       license="BSD-3-Clause";
-      version="0.24.4"
+      version="0.24.5"
    };
 }
