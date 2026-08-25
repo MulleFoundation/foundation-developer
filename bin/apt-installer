@@ -83,27 +83,32 @@ apt-get -q update &&
 apt-get -y install foundation-developer || exit 1
 
 case "${VERSION_CODENAME}" in
-   trixie|noble|plucky|questing|resolute|stonking)
+   forky|questing|resolute|stonking)
+      codename="forky"
+      version="${MULLE_CLANG_VERSION}"
+   ;;
+
+   trixie|noble|plucky)
       codename="trixie"
       version="${MULLE_CLANG_VERSION}"
    ;;
 
-   oracular|mantic|lunar|kinetic|bookworm|forky|duke)
+   bookworm|oracular|mantic|lunar|kinetic|jammy|duke)
       codename="bookworm"
       version="${MULLE_CLANG_VERSION}"
    ;;
 
-   jammy|impish|groovy|focal|bullseye)
+   bullseye|impish|groovy|focal)
       codename="bullseye"
       version="14.0.6.2"
    ;;
 
-   eoan|disco|cosmic|bionic|buster)
+   buster|eoan|disco|cosmic|bionic)
       codename="buster"
       version="14.0.6.2"
    ;;
 
-   artful|zesty|yakkety|xenial|stretch)
+   stretch|xenial|yakkety|zesty|artful)
       codename="stretch"
       version="14.0.6.2"
    ;;
