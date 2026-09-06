@@ -150,8 +150,8 @@ the [compiler releases](//github.com/mulle-cc/mulle-clang-project/releases)
 page:
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/22.1.2.6/mulle-clang-22.1.2.6-bookworm-amd64.deb"
-sudo dpkg --install "mulle-clang-22.1.2.6-bookworm-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/22.1.8.7/mulle-clang-22.1.8.7-bookworm-amd64.deb"
+sudo dpkg --install "mulle-clang-22.1.8.7-bookworm-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
@@ -214,8 +214,8 @@ sudo apt-get install foundation-developer
 #### Install mulle-clang and mulle-gdb
 
 ``` sh
-curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/22.1.2.6/mulle-clang-22.1.2.6-bookworm-amd64.deb"
-sudo dpkg --install "mulle-clang-22.1.2.6-bookworm-amd64.deb"
+curl -L -O "https://github.com/mulle-cc/mulle-clang-project/releases/download/22.1.8.7/mulle-clang-22.1.8.7-bookworm-amd64.deb"
+sudo dpkg --install "mulle-clang-22.1.8.7-bookworm-amd64.deb"
 ```
 
 Check the [debugger releases](//github.com/mulle-cc/mulle-gdb/releases)
