@@ -16,7 +16,7 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       
     - name: Check installer URL
       id: check-installer
@@ -69,7 +69,7 @@ jobs:
 
     - name: Create Issue on Failure
       if: failure()
-      uses: actions/github-script@v7
+      uses: actions/github-script@v9
       with:
         script: |
           const title = '🚨 URL Health Check Failed';
