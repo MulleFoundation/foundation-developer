@@ -22,7 +22,7 @@ jobs:
     - name: Add to path
       run:  echo "$HOME/bin" >> $GITHUB_PATH
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - uses: mulle-sde/github-ci@v2
 
@@ -39,7 +39,7 @@ jobs:
       id: executable
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: artifact.${{ runner.os }}
         path: ${{ steps.executable.outputs.exepath }}
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Linux Artifact
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v8
         with:
           name: artifact.Linux
           # actual file will be ${{ steps.executable.outputs.exepath }} though!
@@ -61,7 +61,7 @@ jobs:
              mv ${{ github.workspace }}/${{ github.event.repository.name }} ${{ github.workspace }}/${{ github.event.repository.name }}.linux
 
       - name: Download macOS Artifact
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v8
         with:
           name: artifact.macOS
 
@@ -69,7 +69,7 @@ jobs:
         run: mv ${{ github.workspace }}/${{ github.event.repository.name }} ${{ github.workspace }}/${{ github.event.repository.name }}.macos
 
       - name: Upload Artifacts
-        uses: alexellis/upload-assets@0.4.0
+        uses: alexellis/upload-assets@0.5.0
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
