@@ -19,6 +19,11 @@ jobs:
     - name: Dump Environment
       run:  env | sort
 
+    - name: Trust mulle-kybernetik tap
+      run: |
+        brew trust --tap mulle-kybernetik/software || true
+        brew trust --tap mulle-kybernetik/prerelease || true
+
     - name: Install prerelease
       if: ${{ env.MULLE_HOSTNAME == 'ci-prerelease' }}
       run: |
